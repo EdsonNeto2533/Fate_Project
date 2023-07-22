@@ -15,3 +15,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Fate Project"
 include(":app")
+include(":core")
+include(":commons")

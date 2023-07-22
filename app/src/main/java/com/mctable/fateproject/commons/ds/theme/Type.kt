@@ -1,4 +1,4 @@
-package com.mctable.fateproject.ui.theme
+package com.mctable.fateproject.commons.ds.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

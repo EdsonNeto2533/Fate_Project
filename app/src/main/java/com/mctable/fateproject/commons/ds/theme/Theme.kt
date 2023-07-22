@@ -1,4 +1,4 @@
-package com.mctable.fateproject.ui.theme
+package com.mctable.fateproject.commons.ds.theme
 
 import android.app.Activity
 import android.os.Build
