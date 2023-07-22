@@ -8,15 +8,12 @@ object Versions {
     const val RETROFIT = "2.9.0"
     const val COMPOSE_NAVIGATION = "2.6.0"
     const val COROUTINES = "1.6.4"
+    const val APP_COMPAT = "1.6.1"
 }
 
 object Libs {
     const val androidGradlePlugin = "com.android.tools.build:gradle:7.2.1"
     //...
-
-    object Compose {
-
-    }
 
     object Kotlin {
         private const val version = "1.7.0"
@@ -29,7 +26,7 @@ object Libs {
         const val androidLifeCycle =
             "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.LIFE_CYCLE}"
         const val material3 = "androidx.compose.material3:material3"
-        //...
+        const val appCompat = "androidx.appcompat:appcompat:${Versions.APP_COMPAT}"
 
         object Compose {
             const val composeActivity = "androidx.activity:activity-compose:${Versions.COMPOSE}"
@@ -38,6 +35,7 @@ object Libs {
             const val composeUi = "androidx.compose.ui:ui"
             const val composeGraphics = "androidx.compose.ui:ui-graphics"
             const val composePreview = "androidx.compose.ui:ui-tooling-preview"
+            const val composeBom = "androidx.compose:compose-bom:2023.03.00"
         }
     }
 

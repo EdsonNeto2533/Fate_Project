@@ -1,3 +1,6 @@
+import dependencies.ConfigurationData
+import dependencies.Libs
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -5,10 +8,10 @@ plugins {
 
 android {
     namespace = "com.mctable.commons"
-    compileSdk = 33
+    compileSdk = ConfigurationData.compileSdk
 
     defaultConfig {
-        minSdk = 24
+        minSdk = ConfigurationData.minSdk
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -31,19 +34,18 @@ android {
         jvmTarget = "1.8"
     }
 }
-val composeVersion = "1.7.2"
-val lifeCycleVersion = "2.6.1"
+
 dependencies {
-    implementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.ui:ui-graphics")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.material3:material3")
-    implementation("androidx.core:core-ktx:1.10.1")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifeCycleVersion")
-    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation(platform(Libs.AndroidX.Compose.composeBom))
+    implementation(Libs.AndroidX.Compose.composeUi)
+    implementation(Libs.AndroidX.Compose.composeGraphics)
+    implementation(Libs.AndroidX.Compose.composePreview)
+    implementation(Libs.AndroidX.material3)
+    implementation(Libs.AndroidX.androidCore)
+    implementation(Libs.AndroidX.androidLifeCycle)
+    implementation(Libs.AndroidX.appCompat)
     implementation("com.google.android.material:material:1.9.0")
-    implementation("androidx.activity:activity-compose:$composeVersion")
+    implementation(Libs.AndroidX.Compose.composeActivity)
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
