@@ -1,3 +1,6 @@
+import dependencies.ConfigurationData
+import dependencies.Libs
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -5,10 +8,10 @@ plugins {
 
 android {
     namespace = "com.mctable.core"
-    compileSdk = 33
+    compileSdk = ConfigurationData.compileSdk
 
     defaultConfig {
-        minSdk = 24
+        minSdk = ConfigurationData.minSdk
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -33,10 +36,10 @@ android {
 }
 
 dependencies {
-
-    implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.8.0")
+    implementation(Libs.AndroidX.androidCore)
+    implementation(Libs.Retrofit.retrofit)
+    implementation(Libs.Hilt.hilt)
+    implementation(Libs.Coroutines.coroutines)
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")

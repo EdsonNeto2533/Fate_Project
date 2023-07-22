@@ -66,13 +66,16 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifeCycleVersion")
     implementation("androidx.activity:activity-compose:$composeVersion")
 
+
+    //Modules
+    implementation(project(mapOf("path" to ":commons")))
+    implementation(project(mapOf("path" to ":core")))
+
     //Compose navigation
     implementation("androidx.navigation:navigation-compose:$composeNavVersion")
 
     //Hilt
     implementation("com.google.dagger:hilt-android:$hiltVersion")
-    implementation(project(mapOf("path" to ":commons")))
-    implementation(project(mapOf("path" to ":core")))
     kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
 
     //Retrofit
