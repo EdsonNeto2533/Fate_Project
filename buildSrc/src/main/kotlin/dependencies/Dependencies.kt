@@ -41,6 +41,7 @@ object Libs {
 
     object Hilt {
         const val hilt = "com.google.dagger:hilt-android:${Versions.HILT}"
+        const val hiltKapt = "com.google.dagger:hilt-android-compiler:${Versions.HILT}"
     }
 
     object Retrofit {

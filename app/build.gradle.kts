@@ -1,3 +1,5 @@
+import dependencies.ConfigurationData
+import dependencies.Libs
 
 plugins {
     id("com.android.application")
@@ -8,14 +10,14 @@ plugins {
 
 android {
     namespace = "com.mctable.fateproject"
-    compileSdk = 33
+    compileSdk = ConfigurationData.compileSdk
 
     defaultConfig {
-        applicationId = "com.mctable.fateproject"
-        minSdk = 24
-        targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
+        applicationId = ConfigurationData.applicationId
+        minSdk = ConfigurationData.minSdk
+        targetSdk = ConfigurationData.targetSdk
+        versionCode = ConfigurationData.versionCode
+        versionName = ConfigurationData.versionName
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -52,19 +54,11 @@ android {
     }
 }
 
-val composeVersion = "1.7.2"
-val androidCoreVersion = "1.10.1"
-val lifeCycleVersion = "2.6.1"
-val hiltVersion = "2.44"
-val retrofitVersion = "2.9.0"
-val composeNavVersion = "2.6.0"
-val coroutinesVersion = "1.6.4"
-
 dependencies {
 
-    implementation("androidx.core:core-ktx:$androidCoreVersion")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:$lifeCycleVersion")
-    implementation("androidx.activity:activity-compose:$composeVersion")
+    implementation(Libs.AndroidX.androidCore)
+    implementation(Libs.AndroidX.androidLifeCycle)
+    implementation(Libs.AndroidX.Compose.composeActivity)
 
 
     //Modules
@@ -72,23 +66,20 @@ dependencies {
     implementation(project(mapOf("path" to ":core")))
 
     //Compose navigation
-    implementation("androidx.navigation:navigation-compose:$composeNavVersion")
+    implementation(Libs.AndroidX.Compose.composeNavigation)
 
     //Hilt
-    implementation("com.google.dagger:hilt-android:$hiltVersion")
-    kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
-
-    //Retrofit
-    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
+    implementation(Libs.Hilt.hilt)
+    kapt(Libs.Hilt.hiltKapt)
 
     //Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion")
+    implementation(Libs.Coroutines.coroutines)
 
-    implementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.ui:ui-graphics")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.material3:material3")
+    implementation(platform(Libs.AndroidX.Compose.composeBom))
+    implementation(Libs.AndroidX.Compose.composeUi)
+    implementation(Libs.AndroidX.Compose.composeGraphics)
+    implementation(Libs.AndroidX.Compose.composePreview)
+    implementation(Libs.AndroidX.material3)
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
