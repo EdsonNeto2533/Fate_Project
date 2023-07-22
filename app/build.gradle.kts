@@ -1,4 +1,3 @@
-import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
 
 plugins {
     id("com.android.application")
@@ -72,6 +71,8 @@ dependencies {
 
     //Hilt
     implementation("com.google.dagger:hilt-android:$hiltVersion")
+    implementation(project(mapOf("path" to ":commons")))
+    implementation(project(mapOf("path" to ":core")))
     kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
 
     //Retrofit

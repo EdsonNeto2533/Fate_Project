@@ -1,4 +1,4 @@
-package com.mctable.fateproject.commons.ds.theme
+package com.mctable.commons.ds.theme
 
 import android.app.Activity
 import android.os.Build
