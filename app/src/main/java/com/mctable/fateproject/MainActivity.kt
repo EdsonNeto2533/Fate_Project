@@ -10,39 +10,30 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.mctable.commons.ds.navigation.FateNavigation
+import com.mctable.commons.ds.navigation.FeatureModuleRef
 import com.mctable.commons.ds.theme.FateProjectTheme
+import com.mctable.fateproject.commons.navigation.FateNavigationModules
+import com.mctable.fateproject.commons.navigation.MainModuleNavigation
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : ComponentActivity() {
+class MainActivity : ComponentActivity(), FateNavigation {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             FateProjectTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
+                MainModuleNavigation()
             }
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    FateProjectTheme {
-        Greeting("Android")
+    override fun navigate(featureModuleRef: FeatureModuleRef, route: String?) {
+        FateNavigationModules.navigateToModule(
+            this,
+            featureModuleRef,
+            this,
+            route
+        )
     }
 }

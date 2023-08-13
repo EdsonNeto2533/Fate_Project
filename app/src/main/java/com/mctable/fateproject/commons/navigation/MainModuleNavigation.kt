@@ -6,19 +6,23 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 
+object MainModuleNavigationRoutes {
+    const val ROOT = "/"
+}
 
 @Composable
-fun AppNavigation(
-    modifier: Modifier = Modifier,
-    navController: NavHostController
+fun MainModuleNavigation(
 ) {
+
+    val navController = rememberNavController()
 
     NavHost(
         navController = navController,
-        startDestination = "/"
+        startDestination = MainModuleNavigationRoutes.ROOT
     ) {
-        composable("/") {
+        composable(MainModuleNavigationRoutes.ROOT) {
             Text(text = "home")
         }
     }
