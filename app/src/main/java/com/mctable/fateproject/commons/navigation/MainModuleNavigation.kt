@@ -1,16 +1,10 @@
 package com.mctable.fateproject.commons.navigation
 
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-
-object MainModuleNavigationRoutes {
-    const val ROOT = "/"
-}
+import com.mctable.fateproject.splash.views.SplashPage
 
 @Composable
 fun MainModuleNavigation(
@@ -23,7 +17,7 @@ fun MainModuleNavigation(
         startDestination = MainModuleNavigationRoutes.ROOT
     ) {
         composable(MainModuleNavigationRoutes.ROOT) {
-            Text(text = "home")
+            SplashPage()
         }
     }
 
