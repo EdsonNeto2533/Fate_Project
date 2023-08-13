@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Fate Project</string>
+    <string name="title_namodule">Na Module</string>
+    <string name="title_activity_oremos">OremosActivity</string>
 </resources>

@@ -10,16 +10,26 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import com.mctable.commons.ds.navigation.FeatureModuleRef
+import com.mctable.fateproject.MainActivity
+import kotlinx.coroutines.delay
 
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun SplashPage() {
+    val context = LocalContext.current as MainActivity
+    LaunchedEffect(key1 = "key",){
+        delay(3000)
+        context.navigate(FeatureModuleRef.NA, "")
+    }
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         content = { innerPadding ->
