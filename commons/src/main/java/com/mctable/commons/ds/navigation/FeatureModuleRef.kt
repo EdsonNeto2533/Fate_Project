@@ -1,5 +1,5 @@
 package com.mctable.commons.ds.navigation
 
-enum class FeatureModuleRef(val key: String) {
+enum class FeatureModuleRef(key: String) {
     NA("NA")
 }
