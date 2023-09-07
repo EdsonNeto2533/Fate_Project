@@ -28,6 +28,7 @@ fun SplashPage() {
     LaunchedEffect(key1 = "key") {
         delay(3000)
         context.navigate(FeatureModuleRef.NA, null)
+        context.finish()
     }
     Scaffold(
         modifier = Modifier.fillMaxSize(),
