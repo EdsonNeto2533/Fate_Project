@@ -46,41 +46,41 @@ val Typography = Typography(
         fontSize = 10.sp,
         lineHeight = 16.sp,
         fontWeight = FontWeight(700),
-        color = Color(0xFFFFFFFF),
+        color = Color(0xFF1D1D1D),
     ),
     //token - subtitle 2
     labelMedium = TextStyle(
         fontSize = 12.sp,
         lineHeight = 16.sp,
         fontWeight = FontWeight(700),
-        color = Color(0xFFFFFFFF),
+        color = Color(0xFF1D1D1D),
     ),
     //token - subtitle 1
     labelLarge = TextStyle(
         fontSize = 14.sp,
         lineHeight = 16.sp,
         fontWeight = FontWeight(700),
-        color = Color(0xFFFFFFFF),
+        color = Color(0xFF1D1D1D),
     ),
     //token - body 3
     bodySmall = TextStyle(
         fontSize = 10.sp,
         lineHeight = 16.sp,
         fontWeight = FontWeight(400),
-        color = Color(0xFFFFFFFF),
+        color = Color(0xFF1D1D1D),
     ),
     //token - body 2
     bodyMedium = TextStyle(
         fontSize = 12.sp,
         lineHeight = 16.sp,
         fontWeight = FontWeight(400),
-        color = Color(0xFFFFFFFF),
+        color = Color(0xFF1D1D1D),
     ),
     //token body 1
     bodyLarge = TextStyle(
         fontSize = 14.sp,
         lineHeight = 16.sp,
         fontWeight = FontWeight(400),
-        color = Color(0xFFFFFFFF),
+        color = Color(0xFF1D1D1D),
     ),
 )

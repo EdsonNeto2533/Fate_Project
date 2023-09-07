@@ -1,6 +1,7 @@
 package com.mctable.namodule.features.nahome.ui
 
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.consumeWindowInsets
@@ -11,7 +12,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 
+@Preview(showSystemUi = true)
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun NaHomePage() {
@@ -22,12 +25,12 @@ fun NaHomePage() {
                 modifier = Modifier
                     .consumeWindowInsets(innerPadding)
                     .fillMaxSize(),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
                     text = "alow",
                     modifier = Modifier
-                        .fillMaxSize()
-                        .align(Alignment.CenterHorizontally)
                 )
             }
         },

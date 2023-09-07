@@ -7,8 +7,10 @@ import com.mctable.commons.ds.navigation.FateNavigation
 import com.mctable.commons.ds.navigation.FeatureModuleRef
 import com.mctable.commons.ds.theme.FateProjectTheme
 import com.mctable.namodule.navigation.NaModuleNavigation
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class NaMainActivity : ComponentActivity() {
 
     @Inject
