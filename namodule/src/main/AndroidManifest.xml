@@ -9,4 +9,6 @@
             android:theme="@style/Theme.FateProject" />
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
 </manifest>

@@ -54,15 +54,8 @@ dependencies {
 
     //Hilt
     implementation(Libs.Hilt.hilt)
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
-    implementation("androidx.activity:activity-compose:1.7.2")
-    implementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    implementation("androidx.compose.ui:ui")
-    implementation("androidx.compose.ui:ui-graphics")
-    implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.compose.material3:material3")
-    androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
     kapt(Libs.Hilt.hiltKapt)
+    implementation(Libs.Hilt.hiltNavigation)
 
     //Coroutines
     implementation(Libs.Coroutines.coroutines)
@@ -73,6 +66,9 @@ dependencies {
     implementation(Libs.AndroidX.Compose.composePreview)
     implementation(Libs.AndroidX.material3)
     implementation(Libs.AndroidX.androidCore)
+    implementation(Libs.Networking.retrofit)
+    implementation(Libs.Networking.retrofitGsonConverter)
+    implementation(Libs.Networking.gson)
     implementation(Libs.AndroidX.androidLifeCycle)
     //Modules
     implementation(project(mapOf("path" to ":commons")))

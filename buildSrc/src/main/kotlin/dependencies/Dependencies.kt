@@ -5,10 +5,14 @@ object Versions {
     const val ANDROID_CORE = "1.10.1"
     const val LIFE_CYCLE = "2.6.1"
     const val HILT = "2.44"
+    const val HILT_NAVIGATION = "1.0.0"
     const val RETROFIT = "2.9.0"
+    const val RETROFIT_GSON = "2.3.0"
+    const val LOGGING_INTERCEPTOR = "4.11.0"
     const val COMPOSE_NAVIGATION = "2.6.0"
     const val COROUTINES = "1.6.4"
     const val APP_COMPAT = "1.6.1"
+    const val GSON = "2.8.9"
 }
 
 object Libs {
@@ -42,10 +46,14 @@ object Libs {
     object Hilt {
         const val hilt = "com.google.dagger:hilt-android:${Versions.HILT}"
         const val hiltKapt = "com.google.dagger:hilt-android-compiler:${Versions.HILT}"
+        const val hiltNavigation = "androidx.hilt:hilt-navigation-fragment:${Versions.HILT_NAVIGATION}"
     }
 
-    object Retrofit {
+    object Networking {
         const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.RETROFIT}"
+        const val gson = "com.google.code.gson:gson:${Versions.GSON}"
+        const val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.RETROFIT_GSON}"
+        const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.LOGGING_INTERCEPTOR}"
     }
 
     object Coroutines {

@@ -37,7 +37,10 @@ android {
 
 dependencies {
     implementation(Libs.AndroidX.androidCore)
-    implementation(Libs.Retrofit.retrofit)
+    implementation(Libs.Networking.retrofit)
+    implementation(Libs.Networking.retrofitGsonConverter)
+    implementation(Libs.Networking.loggingInterceptor)
+    implementation(Libs.Networking.gson)
     implementation(Libs.Hilt.hilt)
     implementation(Libs.Coroutines.coroutines)
     testImplementation("junit:junit:4.13.2")

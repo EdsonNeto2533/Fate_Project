@@ -19,7 +19,7 @@ class NaMainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             FateProjectTheme {
-                NaModuleNavigation()
+                NaModuleNavigation(this)
             }
         }
     }
