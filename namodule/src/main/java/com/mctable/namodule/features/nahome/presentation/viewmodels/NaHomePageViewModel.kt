@@ -8,19 +8,6 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class NaHomePageViewModel @Inject constructor(
-    private val servantHomeWebService: ServantHomeWebService
-) : ViewModel() {
+class NaHomePageViewModel @Inject constructor() : ViewModel() {
 
-    fun teste() {
-        viewModelScope.launch {
-            try {
-                val alo = servantHomeWebService.getServants(0, 20)
-                println(alo)
-            } catch (e: Exception) {
-                println(e)
-            }
-
-        }
-    }
 }

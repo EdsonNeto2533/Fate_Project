@@ -9,10 +9,7 @@ object HttpClientBuilder {
 
     fun buildRetrofit(): Retrofit {
         val httpClient = OkHttpClient.Builder()
-            .addInterceptor(
-                HttpLoggingInterceptor()
-                    .setLevel(HttpLoggingInterceptor.Level.BODY)
-            )
+            .addInterceptor(Interceptors.loggingInterceptor)
             .build()
 
         return Retrofit.Builder()

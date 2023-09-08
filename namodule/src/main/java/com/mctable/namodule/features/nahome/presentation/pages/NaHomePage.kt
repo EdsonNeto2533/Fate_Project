@@ -19,7 +19,6 @@ import com.mctable.namodule.features.nahome.presentation.viewmodels.NaHomePageVi
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun NaHomePage(naHomePageViewModel: NaHomePageViewModel) {
-    naHomePageViewModel.teste()
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         content = { innerPadding ->
