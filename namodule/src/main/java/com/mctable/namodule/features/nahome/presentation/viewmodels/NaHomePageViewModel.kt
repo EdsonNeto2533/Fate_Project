@@ -1,5 +1,6 @@
 package com.mctable.namodule.features.nahome.presentation.viewmodels
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mctable.namodule.features.nahome.data.networking.webservice.ServantHomeWebService
@@ -9,5 +10,9 @@ import javax.inject.Inject
 
 @HiltViewModel
 class NaHomePageViewModel @Inject constructor() : ViewModel() {
+
+    fun teste(){
+        Log.d("EDSON", "alow")
+    }
 
 }

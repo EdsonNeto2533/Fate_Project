@@ -12,13 +12,16 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.platform.LocalContext
+import com.mctable.core.utils.extensions.getViewModel
+import com.mctable.namodule.NaMainActivity
 import com.mctable.namodule.features.nahome.presentation.viewmodels.NaHomePageViewModel
-
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
-fun NaHomePage(naHomePageViewModel: NaHomePageViewModel) {
+fun NaHomePage() {
+    val context = LocalContext.current as NaMainActivity
+    val viewModel: NaHomePageViewModel = context.getViewModel()
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         content = { innerPadding ->
