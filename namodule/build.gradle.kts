@@ -61,6 +61,7 @@ dependencies {
     implementation(Libs.Coroutines.coroutines)
 
     implementation(platform(Libs.AndroidX.Compose.composeBom))
+    implementation(Libs.Core.arrow)
     implementation(Libs.AndroidX.Compose.composeUi)
     implementation(Libs.AndroidX.Compose.composeGraphics)
     implementation(Libs.AndroidX.Compose.composePreview)

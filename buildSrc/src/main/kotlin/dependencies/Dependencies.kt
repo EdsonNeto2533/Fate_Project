@@ -13,16 +13,20 @@ object Versions {
     const val COROUTINES = "1.6.4"
     const val APP_COMPAT = "1.6.1"
     const val GSON = "2.8.9"
+    const val KOTLIN = "1.7.0"
+    const val GRADLE = "7.2.1"
+    const val ARROW = "1.2.0"
 }
 
 object Libs {
-    const val androidGradlePlugin = "com.android.tools.build:gradle:7.2.1"
-    //...
+    const val androidGradlePlugin = "com.android.tools.build:gradle:${Versions.GRADLE}"
 
     object Kotlin {
-        private const val version = "1.7.0"
-        const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$version"
-        //...
+        const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.KOTLIN}"
+    }
+
+    object Core {
+        const val arrow = "io.arrow-kt:arrow-core:${Versions.ARROW}"
     }
 
     object AndroidX {
@@ -46,14 +50,17 @@ object Libs {
     object Hilt {
         const val hilt = "com.google.dagger:hilt-android:${Versions.HILT}"
         const val hiltKapt = "com.google.dagger:hilt-android-compiler:${Versions.HILT}"
-        const val hiltNavigation = "androidx.hilt:hilt-navigation-fragment:${Versions.HILT_NAVIGATION}"
+        const val hiltNavigation =
+            "androidx.hilt:hilt-navigation-fragment:${Versions.HILT_NAVIGATION}"
     }
 
     object Networking {
         const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.RETROFIT}"
         const val gson = "com.google.code.gson:gson:${Versions.GSON}"
-        const val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.RETROFIT_GSON}"
-        const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.LOGGING_INTERCEPTOR}"
+        const val retrofitGsonConverter =
+            "com.squareup.retrofit2:converter-gson:${Versions.RETROFIT_GSON}"
+        const val loggingInterceptor =
+            "com.squareup.okhttp3:logging-interceptor:${Versions.LOGGING_INTERCEPTOR}"
     }
 
     object Coroutines {

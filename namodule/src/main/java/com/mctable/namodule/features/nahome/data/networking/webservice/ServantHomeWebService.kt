@@ -11,5 +11,5 @@ interface ServantHomeWebService {
     suspend fun getServants(
         @Query("offset") offset: Int,
         @Query("pageSize") pageSize: Int,
-    ): Response<ServantResponse>
+    ): Response<List<ServantResponse>>
 }
