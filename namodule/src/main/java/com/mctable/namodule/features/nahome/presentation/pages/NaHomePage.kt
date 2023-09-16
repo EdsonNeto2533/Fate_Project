@@ -22,6 +22,8 @@ import com.mctable.namodule.features.nahome.presentation.viewmodels.NaHomePageVi
 fun NaHomePage() {
     val context = LocalContext.current as NaMainActivity
     val viewModel: NaHomePageViewModel = context.getViewModel()
+//    val state = viewModel.servantsState
+    viewModel.getServants()
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         content = { innerPadding ->
