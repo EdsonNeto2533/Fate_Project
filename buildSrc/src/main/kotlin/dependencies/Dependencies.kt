@@ -16,6 +16,10 @@ object Versions {
     const val KOTLIN = "1.7.0"
     const val GRADLE = "7.2.1"
     const val ARROW = "1.2.0"
+    const val MOCKK = "1.13.7"
+    const val MOCK_WEB_SERVER = "4.11.0"
+    const val JUNIT = "4.13.2"
+    const val MATERIAL = "1.9.0"
 }
 
 object Libs {
@@ -27,6 +31,10 @@ object Libs {
 
     object Core {
         const val arrow = "io.arrow-kt:arrow-core:${Versions.ARROW}"
+    }
+
+    object Google {
+        const val material = "com.google.android.material:material:${Versions.MATERIAL}"
     }
 
     object AndroidX {
@@ -45,6 +53,12 @@ object Libs {
             const val composePreview = "androidx.compose.ui:ui-tooling-preview"
             const val composeBom = "androidx.compose:compose-bom:2023.03.00"
         }
+    }
+
+    object Modules {
+        val commons = mapOf("path" to ":commons")
+        val core = mapOf("path" to ":core")
+        val naModule = mapOf("path" to ":namodule")
     }
 
     object Hilt {
@@ -66,5 +80,11 @@ object Libs {
     object Coroutines {
         const val coroutines =
             "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.COROUTINES}"
+    }
+
+    object UnitTests {
+        const val mockk = "io.mockk:mockk:${Versions.MOCKK}"
+        const val webServer = "com.squareup.okhttp3:mockwebserver:${Versions.MOCK_WEB_SERVER}"
+        const val junit = "junit:junit:${Versions.JUNIT}"
     }
 }

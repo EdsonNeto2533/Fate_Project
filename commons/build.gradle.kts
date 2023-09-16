@@ -50,9 +50,11 @@ dependencies {
     implementation(Libs.AndroidX.androidCore)
     implementation(Libs.AndroidX.androidLifeCycle)
     implementation(Libs.AndroidX.appCompat)
-    implementation("com.google.android.material:material:1.9.0")
+    implementation(Libs.Google.material)
     implementation(Libs.AndroidX.Compose.composeActivity)
-    testImplementation("junit:junit:4.13.2")
+    testImplementation(Libs.UnitTests.junit)
+    testImplementation(Libs.UnitTests.mockk)
+    testImplementation(Libs.UnitTests.webServer)
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }

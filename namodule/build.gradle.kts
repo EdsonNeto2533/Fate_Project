@@ -72,12 +72,14 @@ dependencies {
     implementation(Libs.Networking.gson)
     implementation(Libs.AndroidX.androidLifeCycle)
     //Modules
-    implementation(project(mapOf("path" to ":commons")))
-    implementation(project(mapOf("path" to ":core")))
+    implementation(project(Libs.Modules.commons))
+    implementation(project(Libs.Modules.core))
     implementation(Libs.AndroidX.Compose.composeActivity)
     //Compose navigation
     implementation(Libs.AndroidX.Compose.composeNavigation)
-    testImplementation("junit:junit:4.13.2")
+    testImplementation(Libs.UnitTests.junit)
+    testImplementation(Libs.UnitTests.mockk)
+    testImplementation(Libs.UnitTests.webServer)
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
