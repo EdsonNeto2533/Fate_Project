@@ -20,6 +20,7 @@ object Versions {
     const val MOCK_WEB_SERVER = "4.11.0"
     const val JUNIT = "4.13.2"
     const val MATERIAL = "1.9.0"
+    const val COROUTINES_TEST = "1.7.3"
 }
 
 object Libs {
@@ -86,5 +87,6 @@ object Libs {
         const val mockk = "io.mockk:mockk:${Versions.MOCKK}"
         const val webServer = "com.squareup.okhttp3:mockwebserver:${Versions.MOCK_WEB_SERVER}"
         const val junit = "junit:junit:${Versions.JUNIT}"
+        const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.COROUTINES_TEST}"
     }
 }
