@@ -1,6 +1,5 @@
-package com.mctable.namodule.features.nahome.data
+package com.mctable.namodule.features.nahome.data.networking.datasource
 
-import com.mctable.namodule.features.nahome.data.networking.datasource.ServantsDataSource
 import com.mctable.namodule.features.nahome.data.networking.datasource.impl.ServantsDataSourceImpl
 import com.mctable.namodule.features.nahome.data.networking.webservice.ServantHomeWebService
 import com.mctable.namodule.features.nahome.data.response.ServantResponse
