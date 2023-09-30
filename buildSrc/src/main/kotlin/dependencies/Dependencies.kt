@@ -90,6 +90,7 @@ object Libs {
         const val webServer = "com.squareup.okhttp3:mockwebserver:${Versions.MOCK_WEB_SERVER}"
         const val junit = "junit:junit:${Versions.JUNIT}"
         const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.COROUTINES_TEST}"
+        const val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.COROUTINES_TEST}"
     }
 }
 
@@ -117,6 +118,7 @@ fun DependencyHandler.unitTests(){
     test(Libs.UnitTests.webServer)
     implementation(Libs.UnitTests.webServer)
     test(Libs.UnitTests.coroutines)
+    test(Libs.UnitTests.coroutinesCore)
 }
 
 fun DependencyHandler.google(){
