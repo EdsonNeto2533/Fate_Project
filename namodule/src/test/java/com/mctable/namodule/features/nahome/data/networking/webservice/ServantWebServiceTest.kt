@@ -1,9 +1,7 @@
 package com.mctable.namodule.features.nahome.data.networking.webservice
 
 import com.mctable.core.utils.extensions.enqueueRequest
-import com.mctable.namodule.features.nahome.data.response.ServantResponse
-import com.mctable.namodule.features.nahome.data.response.SkillResponse
-import com.mctable.namodule.features.nahome.mockers.servantResponse
+import com.mctable.namodule.features.nahome.mockers.servantListResponse
 import kotlinx.coroutines.test.runTest
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.After
@@ -42,7 +40,7 @@ class ServantWebServiceTest {
 
         val result = webService.getServants(0, 1)
 
-        Assert.assertEquals(servantResponse, result.body())
+        Assert.assertEquals(servantListResponse, result.body())
         Assert.assertEquals(200, result.code())
 
     }

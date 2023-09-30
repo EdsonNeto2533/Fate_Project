@@ -22,8 +22,10 @@ class ServantsRepositoryImpl @Inject constructor(
         return try {
             val response = servantsDataSource.getServants(offset, pageSize)
 
-            if (response.code() == 200 && !response.body().isNullOrEmpty()) {
-                return getServantsMapper.transform(response.body()!!).right()
+            if (response.code() == 200) {
+                response.body()?.let {
+                    return getServantsMapper.transform(it).right()
+                }
             }
 
             Exception(FunctionsUtil.getGenericErrorMessage(response)).left()

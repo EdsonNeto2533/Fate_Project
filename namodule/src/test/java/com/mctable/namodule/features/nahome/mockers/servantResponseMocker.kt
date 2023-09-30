@@ -3,7 +3,7 @@ package com.mctable.namodule.features.nahome.mockers
 import com.mctable.namodule.features.nahome.data.response.ServantResponse
 import com.mctable.namodule.features.nahome.data.response.SkillResponse
 
-val servantResponse: List<ServantResponse> = listOf(
+val servantListResponse: List<ServantResponse> = listOf(
     ServantResponse(
         id = 100100,
         name = "Altria Pendragon",
