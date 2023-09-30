@@ -23,7 +23,7 @@ class ServantsRepositoryImpl @Inject constructor(
             val response = servantsDataSource.getServants(offset, pageSize)
 
             if (response.code() == 200) {
-                response.body()?.let {
+                response.body()?.data?.let {
                     return getServantsMapper.transform(it).right()
                 }
             }

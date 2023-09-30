@@ -1,6 +1,7 @@
 package com.mctable.namodule.features.nahome.data.repository
 
 import arrow.core.right
+import com.mctable.core.utils.classes.BaseResponse
 import com.mctable.core.utils.functions.FunctionsUtil
 import com.mctable.core.utils.interfaces.Mapper
 import com.mctable.namodule.features.nahome.data.networking.datasource.ServantsDataSource
@@ -27,7 +28,7 @@ class ServantsRepositoryTest {
     private lateinit var repository: ServantsRepository
     private val mapper: Mapper<List<ServantResponse>, List<ServantModel>> = mockk()
     private val dataSource: ServantsDataSource = mockk()
-    private val servantResponse: Response<List<ServantResponse>> = mockk(relaxed = true)
+    private val servantResponse: Response<BaseResponse<List<ServantResponse>, Any>> = mockk(relaxed = true)
     private val servantModelList: List<ServantModel> = mockk()
     private val httpException: HttpException = mockk(relaxed = true)
 
@@ -41,7 +42,7 @@ class ServantsRepositoryTest {
         // Arrange
         coEvery { dataSource.getServants(any(), any()) } returns servantResponse
         every { servantResponse.code() } returns 200
-        every { servantResponse.body() } returns servantListResponse
+        every { servantResponse.body()?.data } returns servantListResponse
         every { mapper.transform(servantListResponse) } returns servantModelList
 
         // Act

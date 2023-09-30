@@ -40,7 +40,7 @@ class ServantWebServiceTest {
 
         val result = webService.getServants(0, 1)
 
-        Assert.assertEquals(servantListResponse, result.body())
+        Assert.assertEquals(servantListResponse, result.body()?.data)
         Assert.assertEquals(200, result.code())
 
     }

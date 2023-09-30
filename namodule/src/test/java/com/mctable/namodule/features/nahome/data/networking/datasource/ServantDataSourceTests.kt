@@ -1,5 +1,6 @@
 package com.mctable.namodule.features.nahome.data.networking.datasource
 
+import com.mctable.core.utils.classes.BaseResponse
 import com.mctable.namodule.features.nahome.data.networking.datasource.impl.ServantsDataSourceImpl
 import com.mctable.namodule.features.nahome.data.networking.webservice.ServantHomeWebService
 import com.mctable.namodule.features.nahome.data.response.ServantResponse
@@ -21,7 +22,7 @@ class ServantDataSourceTests {
     private lateinit var dataSource: ServantsDataSource
 
     private val webService: ServantHomeWebService = mockk()
-    private val servantListMock: Response<List<ServantResponse>> = mockk()
+    private val servantListMock: Response<BaseResponse<List<ServantResponse>, Any>> = mockk()
     private val httpException: HttpException = mockk()
 
     @Before
