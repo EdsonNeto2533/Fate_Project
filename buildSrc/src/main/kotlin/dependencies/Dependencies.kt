@@ -55,6 +55,7 @@ object Libs {
             const val composeGraphics = "androidx.compose.ui:ui-graphics"
             const val composePreview = "androidx.compose.ui:ui-tooling-preview"
             const val composeBom = "androidx.compose:compose-bom:2023.03.00"
+            const val composePreviewDebug = "androidx.compose.ui:ui-tooling"
         }
     }
 
@@ -136,6 +137,7 @@ fun DependencyHandler.androidX(){
     implementation(Libs.AndroidX.androidLifeCycle)
     implementation(Libs.AndroidX.Compose.composeNavigation)
     implementation(platform(Libs.AndroidX.Compose.composeBom))
+    debugImplementation(Libs.AndroidX.Compose.composePreviewDebug)
 }
 
 fun DependencyHandler.coreModule(){

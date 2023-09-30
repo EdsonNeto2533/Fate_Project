@@ -38,6 +38,7 @@ fun NaHomePage() {
 
     viewModel.getServants()
     Scaffold(
+
         modifier = Modifier.fillMaxSize(),
         content = { innerPadding ->
 
