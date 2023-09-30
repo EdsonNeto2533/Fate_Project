@@ -7,7 +7,7 @@ sealed class UIState<out T> {
     object Idle : UIState<Nothing>()
     object Loading : UIState<Nothing>()
 
-    class Success<T>(val data: T) : UIState<T>()
+    data class Success<T>(val data: T) : UIState<T>()
 
-    class Failure(val error: Error) : UIState<Nothing>()
+    data class Failure(val error: Error) : UIState<Nothing>()
 }
