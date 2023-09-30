@@ -1,9 +1,14 @@
 import dependencies.ConfigurationData
-import dependencies.Libs
+import dependencies.androidX
+import dependencies.core
+import dependencies.hilt
+import dependencies.networking
+import dependencies.unitTests
 
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
 }
 
 android {
@@ -36,16 +41,11 @@ android {
 }
 
 dependencies {
-    implementation(Libs.AndroidX.androidCore)
-    implementation(Libs.Networking.retrofit)
-    implementation(Libs.Networking.retrofitGsonConverter)
-    implementation(Libs.Networking.loggingInterceptor)
-    implementation(Libs.Networking.gson)
-    implementation(Libs.Hilt.hilt)
-    implementation(Libs.Coroutines.coroutines)
-    testImplementation(Libs.UnitTests.junit)
-    testImplementation(Libs.UnitTests.mockk)
-    implementation(Libs.UnitTests.webServer)
+    androidX()
+    networking()
+    hilt()
+    core()
+    unitTests()
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }

@@ -1,5 +1,12 @@
 import dependencies.ConfigurationData
 import dependencies.Libs
+import dependencies.androidX
+import dependencies.commonsModule
+import dependencies.core
+import dependencies.coreModule
+import dependencies.hilt
+import dependencies.naModule
+import dependencies.unitTests
 
 plugins {
     id("com.android.application")
@@ -55,35 +62,13 @@ android {
 }
 
 dependencies {
-
-    implementation(Libs.AndroidX.androidCore)
-    implementation(Libs.AndroidX.androidLifeCycle)
-    implementation(Libs.AndroidX.Compose.composeActivity)
-
-
-    //Modules
-    implementation(project(Libs.Modules.commons))
-    implementation(project(Libs.Modules.core))
-    implementation(project(Libs.Modules.naModule))
-
-    //Compose navigation
-    implementation(Libs.AndroidX.Compose.composeNavigation)
-
-    //Hilt
-    implementation(Libs.Hilt.hilt)
-    kapt(Libs.Hilt.hiltKapt)
-
-    //Coroutines
-    implementation(Libs.Coroutines.coroutines)
-
-    implementation(platform(Libs.AndroidX.Compose.composeBom))
-    implementation(Libs.AndroidX.Compose.composeUi)
-    implementation(Libs.AndroidX.Compose.composeGraphics)
-    implementation(Libs.AndroidX.Compose.composePreview)
-    implementation(Libs.AndroidX.material3)
-    testImplementation(Libs.UnitTests.junit)
-    testImplementation(Libs.UnitTests.mockk)
-    testImplementation(Libs.UnitTests.webServer)
+    coreModule()
+    commonsModule()
+    naModule()
+    hilt()
+    core()
+    androidX()
+    unitTests()
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))

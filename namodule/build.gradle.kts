@@ -1,5 +1,12 @@
 import dependencies.ConfigurationData
-import dependencies.Libs
+import dependencies.androidX
+import dependencies.commonsModule
+import dependencies.core
+import dependencies.coreModule
+import dependencies.hilt
+import dependencies.networking
+import dependencies.unitTests
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
@@ -51,36 +58,14 @@ android {
 }
 
 dependencies {
+    hilt()
+    core()
+    androidX()
+    networking()
+    coreModule()
+    commonsModule()
+    unitTests()
 
-    //Hilt
-    implementation(Libs.Hilt.hilt)
-    kapt(Libs.Hilt.hiltKapt)
-    implementation(Libs.Hilt.hiltNavigation)
-
-    //Coroutines
-    implementation(Libs.Coroutines.coroutines)
-
-    implementation(platform(Libs.AndroidX.Compose.composeBom))
-    implementation(Libs.Core.arrow)
-    implementation(Libs.AndroidX.Compose.composeUi)
-    implementation(Libs.AndroidX.Compose.composeGraphics)
-    implementation(Libs.AndroidX.Compose.composePreview)
-    implementation(Libs.AndroidX.material3)
-    implementation(Libs.AndroidX.androidCore)
-    implementation(Libs.Networking.retrofit)
-    implementation(Libs.Networking.retrofitGsonConverter)
-    implementation(Libs.Networking.gson)
-    implementation(Libs.AndroidX.androidLifeCycle)
-    //Modules
-    implementation(project(Libs.Modules.commons))
-    implementation(project(Libs.Modules.core))
-    implementation(Libs.AndroidX.Compose.composeActivity)
-    //Compose navigation
-    implementation(Libs.AndroidX.Compose.composeNavigation)
-    testImplementation(Libs.UnitTests.junit)
-    testImplementation(Libs.UnitTests.mockk)
-    testImplementation(Libs.UnitTests.webServer)
-    testImplementation(Libs.UnitTests.coroutines)
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))

@@ -1,5 +1,7 @@
 import dependencies.ConfigurationData
-import dependencies.Libs
+import dependencies.androidX
+import dependencies.google
+import dependencies.unitTests
 
 plugins {
     id("com.android.library")
@@ -42,19 +44,9 @@ android {
 }
 
 dependencies {
-    implementation(platform(Libs.AndroidX.Compose.composeBom))
-    implementation(Libs.AndroidX.Compose.composeUi)
-    implementation(Libs.AndroidX.Compose.composeGraphics)
-    implementation(Libs.AndroidX.Compose.composePreview)
-    implementation(Libs.AndroidX.material3)
-    implementation(Libs.AndroidX.androidCore)
-    implementation(Libs.AndroidX.androidLifeCycle)
-    implementation(Libs.AndroidX.appCompat)
-    implementation(Libs.Google.material)
-    implementation(Libs.AndroidX.Compose.composeActivity)
-    testImplementation(Libs.UnitTests.junit)
-    testImplementation(Libs.UnitTests.mockk)
-    testImplementation(Libs.UnitTests.webServer)
+    androidX()
+    google()
+    unitTests()
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }

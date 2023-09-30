@@ -1,5 +1,7 @@
 package dependencies
 
+import org.gradle.api.artifacts.dsl.DependencyHandler
+
 object Versions {
     const val COMPOSE = "1.7.2"
     const val ANDROID_CORE = "1.10.1"
@@ -89,4 +91,59 @@ object Libs {
         const val junit = "junit:junit:${Versions.JUNIT}"
         const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.COROUTINES_TEST}"
     }
+}
+
+fun DependencyHandler.networking(){
+    implementation(Libs.Networking.retrofit)
+    implementation(Libs.Networking.retrofitGsonConverter)
+    implementation(Libs.Networking.loggingInterceptor)
+    implementation(Libs.Networking.gson)
+}
+
+fun DependencyHandler.hilt(){
+    implementation(Libs.Hilt.hilt)
+    alow(Libs.Hilt.hiltKapt)
+    implementation(Libs.Hilt.hiltNavigation)
+}
+
+fun DependencyHandler.core(){
+    implementation(Libs.Coroutines.coroutines)
+    implementation(Libs.Core.arrow)
+}
+
+fun DependencyHandler.unitTests(){
+    test(Libs.UnitTests.junit)
+    test(Libs.UnitTests.mockk)
+    test(Libs.UnitTests.webServer)
+    implementation(Libs.UnitTests.webServer)
+    test(Libs.UnitTests.coroutines)
+}
+
+fun DependencyHandler.google(){
+    implementation(Libs.Google.material)
+}
+
+fun DependencyHandler.androidX(){
+    implementation(Libs.AndroidX.Compose.composeUi)
+    implementation(Libs.AndroidX.Compose.composeGraphics)
+    implementation(Libs.AndroidX.appCompat)
+    implementation(Libs.AndroidX.Compose.composePreview)
+    implementation(Libs.AndroidX.material3)
+    implementation(Libs.AndroidX.androidCore)
+    implementation(Libs.AndroidX.Compose.composeActivity)
+    implementation(Libs.AndroidX.androidLifeCycle)
+    implementation(Libs.AndroidX.Compose.composeNavigation)
+    implementation(platform(Libs.AndroidX.Compose.composeBom))
+}
+
+fun DependencyHandler.coreModule(){
+    implementation(project(Libs.Modules.core))
+}
+
+fun DependencyHandler.naModule(){
+    implementation(project(Libs.Modules.naModule))
+}
+
+fun DependencyHandler.commonsModule(){
+    implementation(project(Libs.Modules.commons))
 }
