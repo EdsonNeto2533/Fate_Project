@@ -28,7 +28,7 @@ import com.mctable.commons.ds.theme.md_theme_light_surfaceTint
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
-fun DefaultAppBar(
+fun DefaultAppBarComponent(
     modifier: Modifier = Modifier,
     title: String?,
     backButtonClick: (() -> Unit)? = null
