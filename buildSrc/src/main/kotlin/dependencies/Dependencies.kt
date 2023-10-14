@@ -18,6 +18,7 @@ object Versions {
     const val KOTLIN = "1.7.0"
     const val GRADLE = "7.2.1"
     const val ARROW = "1.2.0"
+    const val COIL = "2.4.0"
     const val MOCKK = "1.13.7"
     const val MOCK_WEB_SERVER = "4.11.0"
     const val JUNIT = "4.13.2"
@@ -34,6 +35,7 @@ object Libs {
 
     object Core {
         const val arrow = "io.arrow-kt:arrow-core:${Versions.ARROW}"
+        const val coil = "io.coil-kt:coil-compose:${Versions.COIL}"
     }
 
     object Google {
@@ -111,6 +113,7 @@ fun DependencyHandler.hilt(){
 fun DependencyHandler.core(){
     implementation(Libs.Coroutines.coroutines)
     implementation(Libs.Core.arrow)
+    implementation(Libs.Core.coil)
 }
 
 fun DependencyHandler.unitTests(){
