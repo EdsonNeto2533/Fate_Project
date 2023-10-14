@@ -22,15 +22,19 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.invisibleToUser
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.mctable.commons.R
 import com.mctable.commons.ds.theme.md_theme_light_onPrimary
 import com.mctable.commons.ds.theme.md_theme_light_surfaceTint
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
 fun DefaultAppBar(
     modifier: Modifier = Modifier,
@@ -47,14 +51,18 @@ fun DefaultAppBar(
                 }) {
                     Icon(
                         Icons.Filled.ArrowBack,
-                        "",
+                        stringResource(id = R.string.content_description_return),
                         modifier = Modifier.width(50.dp),
                         tint = md_theme_light_onPrimary
                     )
                 }
             } ?: run {
                 Icon(
-                    modifier = Modifier.width(50.dp),
+                    modifier = Modifier
+                        .width(50.dp)
+                        .semantics {
+                            this.invisibleToUser()
+                        },
                     painter = painterResource(id = R.drawable.fgo_logo),
                     contentDescription = "",
                     tint = md_theme_light_onPrimary
