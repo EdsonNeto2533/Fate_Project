@@ -1,5 +1,6 @@
 package com.mctable.namodule.features.nahome.data.networking.mapper
 
+import com.mctable.commons.ds.utils.ServantCard
 import com.mctable.core.utils.interfaces.Mapper
 import com.mctable.namodule.features.nahome.data.response.ServantResponse
 import com.mctable.namodule.features.nahome.domain.model.ServantModel
@@ -17,7 +18,11 @@ class ServantResponseToModelMapper : Mapper<List<ServantResponse>, List<ServantM
                 atkMax = it.atkMax,
                 hpMax = it.hpMax,
                 gender = it.gender,
-                cards = it.cards
+                cards = it.cards.map { key ->
+                    ServantCard.values().find { card ->
+                        card.key == key
+                    } ?: ServantCard.ARTS
+                }
             )
         }
     }

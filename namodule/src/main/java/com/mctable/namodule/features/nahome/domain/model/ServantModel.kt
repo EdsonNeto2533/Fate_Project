@@ -1,5 +1,7 @@
 package com.mctable.namodule.features.nahome.domain.model
 
+import com.mctable.commons.ds.utils.ServantCard
+
 data class ServantModel(
     val id: Int,
     val name: String,
@@ -10,5 +12,5 @@ data class ServantModel(
     val atkMax: Int,
     val hpMax: Int,
     val gender: String,
-    val cards: List<String>,
+    val cards: List<ServantCard>,
 )

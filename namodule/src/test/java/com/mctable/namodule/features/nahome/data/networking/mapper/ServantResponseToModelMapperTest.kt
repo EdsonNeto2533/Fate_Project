@@ -30,7 +30,9 @@ class ServantResponseToModelMapperTest {
         Assert.assertEquals(response[0].name, servantListResponse[0].name)
         Assert.assertEquals(response[0].atkMax, servantListResponse[0].atkMax)
         Assert.assertEquals(response[0].attribute, servantListResponse[0].attribute)
-        Assert.assertEquals(response[0].cards, servantListResponse[0].cards)
+        response[0].cards.forEachIndexed { index, servantCard ->
+            Assert.assertEquals(servantCard.key, servantListResponse[0].cards[index])
+        }
         Assert.assertEquals(response[0].gender, servantListResponse[0].gender)
         Assert.assertEquals(response[0].classId, servantListResponse[0].classId)
         Assert.assertEquals(response[0].className, servantListResponse[0].className)
