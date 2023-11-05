@@ -25,7 +25,7 @@ import com.mctable.namodule.features.nahome.domain.model.ServantModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun servantCardComponent(
+fun ServantCardComponent(
     servantModel: ServantModel
 ) {
     Card(
@@ -50,42 +50,24 @@ fun servantCardComponent(
                     modifier = Modifier
                         .height(56.dp)
                         .width(56.dp),
-                    model = "https://i.pinimg.com/474x/58/3e/36/583e368d0fa6b107be85d71bca17bc1d.jpg",
+                    model = servantModel.characterAssetsModel.characterFaces.first,
                     contentDescription = emptyString,
                 )
             },
             supportingText = {
                 Column {
                     Text(
-                        text = "Avenger",
+                        text = servantModel.className,
                         style = MaterialTheme.typography.labelMedium
                     )
                     Row {
-                        Image(
-                            modifier = Modifier.size(48.dp),
-                            painter = painterResource(id = com.mctable.commons.R.drawable.arts_card),
-                            contentDescription = emptyString,
-                        )
-                        Image(
-                            modifier = Modifier.size(48.dp),
-                            painter = painterResource(id = com.mctable.commons.R.drawable.arts_card),
-                            contentDescription = emptyString,
-                        )
-                        Image(
-                            modifier = Modifier.size(48.dp),
-                            painter = painterResource(id = com.mctable.commons.R.drawable.quick_card),
-                            contentDescription = emptyString,
-                        )
-                        Image(
-                            modifier = Modifier.size(48.dp),
-                            painter = painterResource(id = com.mctable.commons.R.drawable.quick_card),
-                            contentDescription = emptyString,
-                        )
-                        Image(
-                            modifier = Modifier.size(48.dp),
-                            painter = painterResource(id = com.mctable.commons.R.drawable.buster_card),
-                            contentDescription = emptyString,
-                        )
+                        servantModel.cards.forEach {
+                            Image(
+                                modifier = Modifier.size(48.dp),
+                                painter = painterResource(id = it.drawable),
+                                contentDescription = emptyString,
+                            )
+                        }
                     }
                 }
             }

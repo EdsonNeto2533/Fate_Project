@@ -31,7 +31,7 @@ import com.mctable.commons.ds.utils.emptyString
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
-fun searchBarComponent(
+fun SearchBarComponent(
     modifier: Modifier = Modifier,
     placeholderText: String,
     initialText: String? = null,

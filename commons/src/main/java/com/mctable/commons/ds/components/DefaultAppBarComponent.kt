@@ -26,7 +26,7 @@ import com.mctable.commons.ds.utils.emptyString
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
 @Composable
-fun defaultAppBarComponent(
+fun DefaultAppBarComponent(
     modifier: Modifier = Modifier,
     title: String? = null,
     backButtonClick: (() -> Unit)? = null
