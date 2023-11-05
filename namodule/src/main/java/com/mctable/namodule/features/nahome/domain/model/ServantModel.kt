@@ -13,4 +13,17 @@ data class ServantModel(
     val hpMax: Int,
     val gender: String,
     val cards: List<ServantCard>,
+    val characterAssetsModel: CharacterAssetsModel,
+)
+
+data class CharacterAssetsModel(
+    val characterImages: AscensionContentsModel,
+    val characterFaces: AscensionContentsModel
+)
+
+data class AscensionContentsModel(
+    val first: String,
+    val second: String,
+    val third: String,
+    val fourth: String
 )

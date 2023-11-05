@@ -25,10 +25,32 @@ data class ServantResponse(
     val cards: List<String>,
     @SerializedName("skills")
     val skills: List<SkillResponse>,
-//    @SerializedName("noblePhantasms")
-//    val noblePhantasms: List<NoblePhantasmResponse>,
+    @SerializedName("extraAssets")
+    val extraAssets: CharacterAssetsResponse,
 )
 
+data class CharacterAssetsResponse(
+    @SerializedName("charaGraph")
+    val characterImagesResponse: AssetsInfoResponse,
+    @SerializedName("faces")
+    val characterFacesResponse: AssetsInfoResponse,
+)
+
+data class AssetsInfoResponse(
+    @SerializedName("ascension")
+    val ascensionResponse: AscensionResponse
+)
+
+data class AscensionResponse(
+    @SerializedName("1")
+    val first: String,
+    @SerializedName("2")
+    val second: String,
+    @SerializedName("3")
+    val third: String,
+    @SerializedName("4")
+    val fourth: String,
+)
 data class SkillResponse(
     @SerializedName("id")
     val id: Int,
@@ -43,5 +65,3 @@ data class SkillResponse(
     @SerializedName("coolDown")
     val coolDowns: List<Int>
 )
-
-//data class NoblePhantasmResponse()
