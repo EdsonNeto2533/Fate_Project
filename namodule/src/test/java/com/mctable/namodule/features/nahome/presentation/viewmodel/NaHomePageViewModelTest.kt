@@ -31,7 +31,7 @@ class NaHomePageViewModelTest {
     private val genericLoadingState = UIState.Loading
     private lateinit var genericErrorState: UIState.Failure
 
-    private val servantsList: List<ServantModel> = mockk()
+    private val servantsList: List<ServantModel> = mockk(relaxed = true)
     private val servantsSuccessState = UIState.Success(servantsList)
 
 
