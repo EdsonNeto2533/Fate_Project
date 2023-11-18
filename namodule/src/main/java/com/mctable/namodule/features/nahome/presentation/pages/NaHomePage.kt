@@ -1,9 +1,7 @@
 package com.mctable.namodule.features.nahome.presentation.pages
 
 
-import android.util.Log
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
