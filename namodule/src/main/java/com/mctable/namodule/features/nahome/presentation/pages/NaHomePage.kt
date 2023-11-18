@@ -1,18 +1,26 @@
 package com.mctable.namodule.features.nahome.presentation.pages
 
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
 import com.mctable.commons.ds.components.DefaultAppBarComponent
+import com.mctable.commons.ds.components.dialogs.LoadingDialog
 import com.mctable.core.utils.classes.UIState
 import com.mctable.core.utils.extensions.getViewModel
 import com.mctable.namodule.NaMainActivity
@@ -34,17 +42,8 @@ fun NaHomePage() {
     }
 
     if (showLoadingDialogState) {
-        Dialog(
-            onDismissRequest = { },
-            DialogProperties(
-                dismissOnBackPress = false,
-                dismissOnClickOutside = false
-            )
-        ) {
-            CircularProgressIndicator()
-        }
+        LoadingDialog()
     }
-
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
