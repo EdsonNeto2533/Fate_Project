@@ -1,7 +1,10 @@
 package com.mctable.namodule.features.nahome.presentation.pages
 
 
+import android.util.Log
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -9,6 +12,8 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.window.DialogProperties
 import com.mctable.commons.ds.components.DefaultAppBarComponent
 import com.mctable.core.utils.classes.UIState
 import com.mctable.core.utils.extensions.getViewModel
@@ -24,9 +29,22 @@ fun NaHomePage() {
     val context = LocalContext.current as NaMainActivity
     val viewModel: NaHomePageViewModel = context.getViewModel()
     val state = viewModel.servantState.collectAsState().value
+    val showLoadingDialogState = viewModel.showLoadingDialogState.collectAsState().value
 
-    LaunchedEffect(key1 = viewModel.refreshScreen) {
+    LaunchedEffect(key1 = true) {
         viewModel.getServants()
+    }
+
+    if (showLoadingDialogState) {
+        Dialog(
+            onDismissRequest = { },
+            DialogProperties(
+                dismissOnBackPress = false,
+                dismissOnClickOutside = false
+            )
+        ) {
+            CircularProgressIndicator()
+        }
     }
 
 
@@ -46,7 +64,12 @@ fun NaHomePage() {
                 }
 
                 is UIState.Success -> {
-                    ServantListSuccessState(innerPadding = innerPadding, servantsList = state.data)
+                    ServantListSuccessState(
+                        innerPadding = innerPadding,
+                        servantsList = state.data,
+                        loadMore = {
+                            viewModel.loadMoreServants(it)
+                        })
                 }
 
                 UIState.Idle -> {
