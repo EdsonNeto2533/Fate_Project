@@ -1,6 +1,7 @@
 package com.mctable.namodule.features.nahome.presentation.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
@@ -60,12 +61,12 @@ fun ServantCardComponent(
                         text = servantModel.className,
                         style = MaterialTheme.typography.labelMedium
                     )
-                    Row {
+                    Row(horizontalArrangement = Arrangement.SpaceEvenly) {
                         servantModel.cards.forEach {
                             Image(
-                                modifier = Modifier.size(48.dp),
+                                modifier = Modifier.size(40.dp),
                                 painter = painterResource(id = it.drawable),
-                                contentDescription = emptyString,
+                                contentDescription = it.key,
                             )
                         }
                     }

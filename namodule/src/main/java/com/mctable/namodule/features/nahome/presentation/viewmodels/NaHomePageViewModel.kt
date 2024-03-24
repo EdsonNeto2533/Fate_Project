@@ -7,7 +7,6 @@ import com.mctable.namodule.features.nahome.domain.model.ServantModel
 import com.mctable.namodule.features.nahome.domain.usecase.GetServantsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -27,7 +26,7 @@ class NaHomePageViewModel @Inject constructor(
 
     private val _servantsState: MutableStateFlow<UIState<List<ServantModel>>> =
         MutableStateFlow(UIState.Idle)
-    val servantState: StateFlow<UIState<List<ServantModel>>> = _servantsState.asStateFlow()
+    val servantState = _servantsState.asStateFlow()
 
     fun getServants() {
         viewModelScope.launch {
