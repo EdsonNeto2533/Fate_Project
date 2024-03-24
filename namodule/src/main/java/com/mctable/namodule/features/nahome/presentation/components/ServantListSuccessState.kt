@@ -25,6 +25,8 @@ fun ServantListSuccessState(
     innerPadding: PaddingValues,
     servantsList: List<ServantModel>,
     loadMore: (Int) -> Unit,
+    searchClicked: (String) -> Unit,
+    textCleared: () -> Unit,
 ) {
     val listState = rememberLazyListState()
     Column(
@@ -43,8 +45,11 @@ fun ServantListSuccessState(
             modifier = Modifier.padding(top = 16.dp, start = 16.dp, end = 16.dp),
             placeholderText = "Buscar servo",
             searchClicked = {
-
+                searchClicked.invoke(it)
             },
+            textCleared = {
+                textCleared.invoke()
+            }
         )
         LazyColumn(modifier = Modifier
             .padding(16.dp)

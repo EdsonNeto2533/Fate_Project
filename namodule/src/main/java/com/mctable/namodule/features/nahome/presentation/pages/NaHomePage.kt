@@ -56,7 +56,14 @@ fun NaHomePage() {
                         servantsList = state.data,
                         loadMore = {
                             viewModel.loadMoreServants(it)
-                        })
+                        },
+                        textCleared = {
+                            viewModel.resetList()
+                        },
+                        searchClicked = {
+
+                        }
+                    )
                 }
 
                 UIState.Idle -> {

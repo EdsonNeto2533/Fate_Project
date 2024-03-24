@@ -16,7 +16,7 @@ class NaHomePageViewModel @Inject constructor(
     private val getServantsUseCase: GetServantsUseCase
 ) : ViewModel() {
 
-    private var offset = 0
+    private val initialOffset = 0
     private val pageSize = 20
     private val servantList: MutableList<ServantModel> = mutableListOf()
 
@@ -30,7 +30,7 @@ class NaHomePageViewModel @Inject constructor(
 
     fun getServants() {
         viewModelScope.launch {
-            getServantsUseCase.execute(offset, pageSize).collect {
+            getServantsUseCase.execute(initialOffset, pageSize).collect {
                 if (it is UIState.Success) {
                     servantList.addAll(it.data)
                 }
@@ -51,6 +51,15 @@ class NaHomePageViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    fun resetList() {
+        resetValues()
+        getServants()
+    }
+
+    private fun resetValues(){
+        servantList.clear()
     }
 
 }

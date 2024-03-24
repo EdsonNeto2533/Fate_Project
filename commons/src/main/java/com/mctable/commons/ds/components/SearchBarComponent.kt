@@ -36,6 +36,7 @@ fun SearchBarComponent(
     placeholderText: String,
     initialText: String? = null,
     searchClicked: (String) -> Unit,
+    textCleared: () -> Unit
 ) {
     var text by remember {
         mutableStateOf(TextFieldValue(initialText ?: emptyString))
@@ -47,6 +48,9 @@ fun SearchBarComponent(
         shape = RoundedCornerShape(28.dp),
         onValueChange = {
             text = it
+            if (it.text.isEmpty()){
+                textCleared.invoke()
+            }
         },
         placeholder = {
             Text(text = placeholderText)
@@ -75,6 +79,7 @@ fun SearchBarComponent(
                         .padding(horizontal = 8.dp),
                     onClick = {
                         text = TextFieldValue(emptyString)
+                        textCleared.invoke()
                     }) {
                     Icon(
                         painter = painterResource(id = androidx.appcompat.R.drawable.abc_ic_clear_material),
