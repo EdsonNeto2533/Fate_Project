@@ -67,7 +67,7 @@ compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 
 [bundles]
 networking-bundle = ["retrofit", "gson", "retrofit-gson-converter", "loggingInterceptor"]
-hilt-bundle = ["hilt", "hilt-kapt", "hilt-navigation"]
+hilt-bundle = ["hilt", "hilt-navigation"]
 debug-implementation-bundle = ["compose-preview-debug", "compose-ui-tooling", "compose-ui-test-manifest"]
 core-bundle = ["coroutines", "coil", "arrow"]
 unit-test-bundle = ["mockk", "mock-web-server", "junit", "coroutines-test", "coroutines-test-core"]

@@ -40,7 +40,7 @@ fun ServantCardComponent(
             ),
     ) {
         ListItem(
-            headlineText = {
+            headlineContent = {
                 Text(
                     text = servantModel.name,
                     style = MaterialTheme.typography.labelLarge
@@ -55,7 +55,7 @@ fun ServantCardComponent(
                     contentDescription = emptyString,
                 )
             },
-            supportingText = {
+            supportingContent = {
                 Column {
                     Text(
                         text = servantModel.className,

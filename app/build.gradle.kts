@@ -54,6 +54,7 @@ android {
 }
 
 dependencies {
+    kapt(libs.hilt.kapt)
     implementation(project(mapOf("path" to ":core")))
     implementation(project(mapOf("path" to ":commons")))
     implementation(project(mapOf("path" to ":namodule")))

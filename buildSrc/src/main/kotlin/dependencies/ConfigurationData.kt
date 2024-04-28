@@ -2,7 +2,7 @@ package dependencies
 
 object ConfigurationData {
     const val applicationId = "com.mctable.fateproject"
-    const val compileSdk = 33
+    const val compileSdk = 34
     const val buildToolsVersion = "30.0.3"
     const val minSdk = 24
     const val targetSdk= 33
