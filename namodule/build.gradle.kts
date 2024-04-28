@@ -1,11 +1,4 @@
 import dependencies.ConfigurationData
-import dependencies.androidX
-import dependencies.commonsModule
-import dependencies.core
-import dependencies.coreModule
-import dependencies.hilt
-import dependencies.networking
-import dependencies.unitTests
 
 plugins {
     id("com.android.library")
@@ -58,18 +51,18 @@ android {
 }
 
 dependencies {
-    hilt()
-    core()
-    androidX()
-    networking()
-    coreModule()
-    commonsModule()
-    unitTests()
+    implementation(libs.bundles.androidx.bundle)
+    implementation(libs.bundles.networking.bundle)
+    implementation(libs.bundles.hilt.bundle)
+    implementation(libs.bundles.core.bundle)
+    implementation(libs.bundles.unit.test.bundle)
+    debugImplementation(libs.bundles.debug.implementation.bundle)
+    implementation(project(mapOf("path" to ":core")))
+    implementation(project(mapOf("path" to ":commons")))
 
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
-    debugImplementation("androidx.compose.ui:ui-tooling")
-    debugImplementation("androidx.compose.ui:ui-test-manifest")
+
 }

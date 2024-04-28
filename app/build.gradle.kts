@@ -1,12 +1,4 @@
 import dependencies.ConfigurationData
-import dependencies.Libs
-import dependencies.androidX
-import dependencies.commonsModule
-import dependencies.core
-import dependencies.coreModule
-import dependencies.hilt
-import dependencies.naModule
-import dependencies.unitTests
 
 plugins {
     id("com.android.application")
@@ -62,19 +54,18 @@ android {
 }
 
 dependencies {
-    coreModule()
-    commonsModule()
-    naModule()
-    hilt()
-    core()
-    androidX()
-    unitTests()
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
-    debugImplementation("androidx.compose.ui:ui-tooling")
-    debugImplementation("androidx.compose.ui:ui-test-manifest")
+    implementation(project(mapOf("path" to ":core")))
+    implementation(project(mapOf("path" to ":commons")))
+    implementation(project(mapOf("path" to ":namodule")))
+    implementation(libs.bundles.hilt.bundle)
+    implementation(libs.bundles.core.bundle)
+    implementation(libs.bundles.androidx.bundle)
+    testImplementation(libs.bundles.unit.test.bundle)
+//    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+//    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+//    androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
+//    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
+    debugImplementation(libs.bundles.debug.implementation.bundle)
 }
 
 kapt {

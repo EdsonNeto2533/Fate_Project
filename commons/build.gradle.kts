@@ -1,7 +1,4 @@
 import dependencies.ConfigurationData
-import dependencies.androidX
-import dependencies.google
-import dependencies.unitTests
 
 plugins {
     id("com.android.library")
@@ -44,9 +41,9 @@ android {
 }
 
 dependencies {
-    androidX()
-    google()
-    unitTests()
+    implementation(libs.bundles.androidx.bundle)
+    implementation(libs.bundles.material.bundle)
+    testImplementation(libs.bundles.unit.test.bundle)
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }

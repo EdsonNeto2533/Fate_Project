@@ -6,3 +6,9 @@ plugins {
     id("com.android.library") version "8.1.0-rc01" apply false
     id("com.android.dynamic-feature") version "8.1.0-rc01" apply false
 }
+
+buildscript {
+    dependencies {
+        classpath("com.android.tools.build:gradle:8.0.0")
+    }
+}

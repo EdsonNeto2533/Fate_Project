@@ -1,9 +1,4 @@
 import dependencies.ConfigurationData
-import dependencies.androidX
-import dependencies.core
-import dependencies.hilt
-import dependencies.networking
-import dependencies.unitTests
 
 plugins {
     id("com.android.library")
@@ -41,11 +36,11 @@ android {
 }
 
 dependencies {
-    androidX()
-    networking()
-    hilt()
-    core()
-    unitTests()
+    implementation(libs.bundles.androidx.bundle)
+    implementation(libs.bundles.networking.bundle)
+    implementation(libs.bundles.hilt.bundle)
+    implementation(libs.bundles.core.bundle)
+    implementation(libs.bundles.unit.test.bundle)
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 }
