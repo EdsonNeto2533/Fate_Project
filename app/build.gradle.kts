@@ -1,10 +1,10 @@
 import dependencies.ConfigurationData
 
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
     kotlin("kapt")
-    id("com.google.dagger.hilt.android")
+    alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.dagger.hilt)
+    alias(libs.plugins.android.application)
 }
 
 android {

@@ -58,7 +58,7 @@ class NaHomePageViewModel @Inject constructor(
         getServants()
     }
 
-    private fun resetValues(){
+    private fun resetValues() {
         servantList.clear()
     }
 
