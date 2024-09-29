@@ -4,7 +4,7 @@ package com.mctable.commons.ds.components
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -13,7 +13,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -24,7 +23,7 @@ import com.mctable.commons.ds.theme.md_theme_light_surfaceTint
 import com.mctable.commons.ds.utils.emptyString
 
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DefaultAppBarComponent(
     modifier: Modifier = Modifier,
@@ -33,14 +32,14 @@ fun DefaultAppBarComponent(
 ) {
     CenterAlignedTopAppBar(
         modifier = modifier.then(modifier),
-        colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = md_theme_light_surfaceTint),
+        colors = TopAppBarDefaults.centerAlignedTopAppBarColors(containerColor = md_theme_light_surfaceTint),
         navigationIcon = {
             backButtonClick?.let {
                 IconButton(onClick = {
                     it.invoke()
                 }) {
                     Icon(
-                        Icons.Filled.ArrowBack,
+                        Icons.AutoMirrored.Filled.ArrowBack,
                         stringResource(id = R.string.content_description_return),
                         modifier = Modifier.width(50.dp),
                         tint = md_theme_light_onPrimary
