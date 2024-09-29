@@ -1,13 +1,12 @@
-package com.mctable.fateproject.splash.views
+package com.mctable.fateproject.splash.presentation.views
 
+import androidx.activity.ComponentActivity
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -16,18 +15,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import com.mctable.fateproject.MainActivity
+import com.mctable.core.utils.extensions.getViewModel
+import com.mctable.fateproject.splash.presentation.viewmodel.SplashPageViewModel
 import kotlinx.coroutines.delay
 
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun SplashPage() {
-    val context = LocalContext.current as MainActivity
+
+    val context = LocalContext.current as ComponentActivity
+    val viewModel: SplashPageViewModel = context.getViewModel()
+
     LaunchedEffect(key1 = "key") {
         delay(3000)
-        context.navigate(FeatureModuleRef.NA, null)
-        context.finish()
+        viewModel.navigateToNaHome()
     }
     Scaffold(
         modifier = Modifier.fillMaxSize(),
