@@ -1,4 +1,5 @@
 import dependencies.ConfigurationData
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     id("com.android.library")
@@ -31,6 +32,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = ConfigurationData.jvmTarget
+        languageVersion = ConfigurationData.kotlin
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"

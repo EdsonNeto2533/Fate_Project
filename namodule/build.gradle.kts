@@ -36,6 +36,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = ConfigurationData.jvmTarget
+        languageVersion = ConfigurationData.kotlin
     }
     buildFeatures {
         compose = true
