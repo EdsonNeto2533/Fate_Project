@@ -16,7 +16,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
-import com.mctable.commons.ds.navigation.FeatureModuleRef
 import com.mctable.fateproject.MainActivity
 import kotlinx.coroutines.delay
 
