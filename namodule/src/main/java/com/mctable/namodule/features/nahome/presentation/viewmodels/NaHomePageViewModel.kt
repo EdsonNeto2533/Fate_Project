@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.mctable.core.utils.classes.UIState
 import com.mctable.namodule.features.nahome.domain.model.ServantModel
+import com.mctable.namodule.features.nahome.domain.usecase.GetServantsByNameUseCase
 import com.mctable.namodule.features.nahome.domain.usecase.GetServantsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,13 +14,13 @@ import javax.inject.Inject
 
 @HiltViewModel
 class NaHomePageViewModel @Inject constructor(
-    private val getServantsUseCase: GetServantsUseCase
+    private val getServantsUseCase: GetServantsUseCase,
+    private val getServantsByNameUseCase: GetServantsByNameUseCase
 ) : ViewModel() {
 
     private val initialOffset = 0
     private val pageSize = 20
     private val servantList: MutableList<ServantModel> = mutableListOf()
-
 
     private val _showLoadingDialogState: MutableStateFlow<Boolean> = MutableStateFlow(false)
     val showLoadingDialogState = _showLoadingDialogState.asStateFlow()
@@ -39,7 +40,6 @@ class NaHomePageViewModel @Inject constructor(
         }
     }
 
-
     fun loadMoreServants(index: Int) {
         viewModelScope.launch {
             _showLoadingDialogState.emit(true)
@@ -49,6 +49,14 @@ class NaHomePageViewModel @Inject constructor(
                     _showLoadingDialogState.emit(false)
                     _servantsState.emit(UIState.Success(servantList))
                 }
+            }
+        }
+    }
+
+    fun loadServantsByName(name: String) {
+        viewModelScope.launch {
+            getServantsByNameUseCase.execute(name).collect {
+                _servantsState.emit(it)
             }
         }
     }

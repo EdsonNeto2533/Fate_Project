@@ -7,6 +7,10 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import com.mctable.commons.ds.components.DefaultAppBarComponent
@@ -25,6 +29,9 @@ fun NaHomePage() {
     val viewModel: NaHomePageViewModel = context.getViewModel()
     val state = viewModel.servantState.collectAsState().value
     val showLoadingDialogState = viewModel.showLoadingDialogState.collectAsState().value
+    var searchText by remember {
+        mutableStateOf("")
+    }
 
     LaunchedEffect(key1 = true) {
         viewModel.getServants()
@@ -57,11 +64,14 @@ fun NaHomePage() {
                             viewModel.loadMoreServants(it)
                         },
                         textCleared = {
+                            searchText = ""
                             viewModel.resetList()
                         },
                         searchClicked = {
-
-                        }
+                            searchText = it
+                            viewModel.loadServantsByName(it)
+                        },
+                        searchedText = searchText
                     )
                 }
 
