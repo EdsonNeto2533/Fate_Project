@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -43,12 +42,14 @@ fun SearchBarComponent(
     }
 
     OutlinedTextField(
-        modifier = Modifier.fillMaxWidth().then(modifier),
+        modifier = Modifier
+            .fillMaxWidth()
+            .then(modifier),
         value = text,
         shape = RoundedCornerShape(28.dp),
         onValueChange = {
             text = it
-            if (it.text.isEmpty()){
+            if (it.text.isEmpty()) {
                 textCleared.invoke()
             }
         },
