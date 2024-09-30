@@ -17,6 +17,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.mctable.commons.ds.components.ClassFilterComponent
 import com.mctable.commons.ds.components.SearchBarComponent
 import com.mctable.namodule.features.nahome.domain.model.ServantModel
 
@@ -51,13 +52,20 @@ fun ServantListSuccessState(
                 textCleared.invoke()
             }
         )
+
+        ClassFilterComponent(modifier = Modifier.padding(top = 16.dp, start = 20.dp, end = 20.dp, bottom = 16.dp)) {
+
+        }
         LazyColumn(modifier = Modifier
-            .padding(16.dp)
             .wrapContentHeight(),
             state = listState,
+            verticalArrangement = Arrangement.spacedBy(8.dp),
             content = {
                 items(count = servantsList.size) {
-                    ServantCardComponent(servantModel = servantsList[it])
+                    ServantCardComponent(
+                        modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 8.dp),
+                        servantModel = servantsList[it]
+                    )
 
                     shouldLoadMore = it == servantsList.size - 1
                     LaunchedEffect(key1 = shouldLoadMore) {

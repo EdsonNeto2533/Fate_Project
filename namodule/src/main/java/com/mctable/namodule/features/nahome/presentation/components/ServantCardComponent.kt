@@ -24,14 +24,13 @@ import com.mctable.commons.ds.utils.emptyString
 import com.mctable.namodule.features.nahome.domain.model.ServantModel
 
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ServantCardComponent(
+    modifier: Modifier = Modifier,
     servantModel: ServantModel
 ) {
     Card(
-        modifier = Modifier
-            .padding(16.dp)
+        modifier = Modifier.then(modifier)
             .shadow(
                 elevation = 10.dp,
                 ambientColor = DefaultShadowColor,

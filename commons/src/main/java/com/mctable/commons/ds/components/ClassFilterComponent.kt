@@ -1,5 +1,6 @@
 package com.mctable.commons.ds.components
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -7,6 +8,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.runtime.Composable
@@ -36,7 +38,8 @@ fun ClassFilterComponent(modifier: Modifier = Modifier, onClick: (ServantClasses
                         clip = 10.dp > 0.dp,
                         spotColor = Color.Transparent,
                     ),
-                elevation = CardDefaults.elevatedCardElevation(),
+                shape = RoundedCornerShape(16.dp),
+                border = BorderStroke(2.dp, Color.LightGray),
                 colors = CardDefaults.cardColors(containerColor = Color.Transparent),
                 onClick = { onClick.invoke(servantClass) }
             ) {
