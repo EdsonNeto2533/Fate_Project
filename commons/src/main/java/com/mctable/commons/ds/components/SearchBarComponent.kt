@@ -29,7 +29,7 @@ import com.mctable.commons.R
 import com.mctable.commons.ds.utils.emptyString
 
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalComposeUiApi::class)
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun SearchBarComponent(
     modifier: Modifier = Modifier,
