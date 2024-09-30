@@ -82,4 +82,4 @@ debug-implementation-bundle = ["compose-preview-debug", "compose-ui-tooling", "c
 core-bundle = ["coroutines", "coil", "arrow"]
 unit-test-bundle = ["mockk", "mock-web-server", "junit", "coroutines-test", "coroutines-test-core"]
 material-bundle = ["material"]
-androidx-bundle = ["compose-ui", "compose-graphics", "app-compat", "compose-preview", "material-3", "android-core", "android-lifecycle", "compose-activity", "compose-navigation", "compose-bom"]
+androidx-bundle = ["compose-ui", "compose-graphics", "app-compat", "compose-preview","compose-ui-tooling", "material-3", "android-core", "android-lifecycle", "compose-activity", "compose-navigation", "compose-bom"]
