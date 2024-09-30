@@ -5,5 +5,10 @@ import com.mctable.namodule.features.nahome.data.response.ServantResponse
 import retrofit2.Response
 
 interface ServantsDataSource {
-    suspend fun getServants(offset: Int, pageSize: Int): Response<BaseResponse<List<ServantResponse>, Any>>
+    suspend fun getServants(
+        offset: Int,
+        pageSize: Int
+    ): Response<BaseResponse<List<ServantResponse>, Any>>
+
+    suspend fun getServantsByName(name: String): Response<BaseResponse<List<ServantResponse>, Any>>
 }

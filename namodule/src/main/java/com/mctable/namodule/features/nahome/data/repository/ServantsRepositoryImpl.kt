@@ -34,4 +34,20 @@ class ServantsRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun getServantsByName(name: String): Either<Throwable, List<ServantModel>> {
+        return try {
+            val response = servantsDataSource.getServantsByName(name)
+
+            if (response.code() == 200) {
+                response.body()?.data?.let {
+                    return getServantsMapper.transform(it).right()
+                }
+            }
+
+            Exception(FunctionsUtil.getGenericErrorMessage(response)).left()
+        } catch (e: Exception) {
+            e.left()
+        }
+    }
+
 }

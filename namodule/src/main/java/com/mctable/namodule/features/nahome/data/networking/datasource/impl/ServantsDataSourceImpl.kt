@@ -10,6 +10,12 @@ import javax.inject.Inject
 class ServantsDataSourceImpl @Inject constructor(
     private val webService: ServantHomeWebService
 ) : ServantsDataSource {
-    override suspend fun getServants(offset: Int, pageSize: Int): Response<BaseResponse<List<ServantResponse>, Any>> =
+    override suspend fun getServants(
+        offset: Int,
+        pageSize: Int
+    ): Response<BaseResponse<List<ServantResponse>, Any>> =
         webService.getServants(offset, pageSize)
+
+    override suspend fun getServantsByName(name: String): Response<BaseResponse<List<ServantResponse>, Any>> =
+        webService.getServantsByName(name)
 }

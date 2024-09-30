@@ -7,7 +7,9 @@ import com.mctable.namodule.features.nahome.data.networking.mapper.ServantRespon
 import com.mctable.namodule.features.nahome.data.networking.webservice.ServantHomeWebService
 import com.mctable.namodule.features.nahome.data.repository.ServantsRepositoryImpl
 import com.mctable.namodule.features.nahome.domain.repository.ServantsRepository
+import com.mctable.namodule.features.nahome.domain.usecase.GetServantsByNameUseCase
 import com.mctable.namodule.features.nahome.domain.usecase.GetServantsUseCase
+import com.mctable.namodule.features.nahome.domain.usecase.impl.GetServantsByNameUseCaseImpl
 import com.mctable.namodule.features.nahome.domain.usecase.impl.GetServantsUseCaseImpl
 import dagger.Module
 import dagger.Provides
@@ -39,5 +41,9 @@ object CoreModule {
     @Provides
     fun getServantsUseCase(repository: ServantsRepository): GetServantsUseCase =
         GetServantsUseCaseImpl(repository)
+
+    @Provides
+    fun getServantsByNameUseCase(repository: ServantsRepository): GetServantsByNameUseCase =
+        GetServantsByNameUseCaseImpl(repository)
 
 }
