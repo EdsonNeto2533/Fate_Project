@@ -23,10 +23,8 @@ class ServantsRepositoryImpl @Inject constructor(
         return try {
             val response = servantsDataSource.getServants(offset, pageSize, servantClass)
 
-            if (response.code() == 200) {
-                response.body()?.data?.let {
-                    return getServantsMapper.transform(it).right()
-                }
+            if (response.code() == 200 && response.body()?.data != null) {
+                return getServantsMapper.transform(response.body()!!.data!!).right()
             }
 
             Exception(FunctionsUtil.getGenericErrorMessage(response)).left()
@@ -39,10 +37,8 @@ class ServantsRepositoryImpl @Inject constructor(
         return try {
             val response = servantsDataSource.getServantsByName(name)
 
-            if (response.code() == 200) {
-                response.body()?.data?.let {
-                    return getServantsMapper.transform(it).right()
-                }
+            if (response.code() == 200 && response.body()?.data != null) {
+                return getServantsMapper.transform(response.body()!!.data!!).right()
             }
 
             Exception(FunctionsUtil.getGenericErrorMessage(response)).left()

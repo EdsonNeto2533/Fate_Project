@@ -94,4 +94,63 @@ class ServantsRepositoryTest {
             coVerify { dataSource.getServants(any(), any(), null) }
 
         }
+
+
+    @Test
+    fun should_return_right_servant_list_when_get_servants_by_name_is_called_with_success() = runTest {
+        // Arrange
+        coEvery { dataSource.getServantsByName("mock") } returns servantResponse
+        every { servantResponse.code() } returns 200
+        every { servantResponse.body()?.data } returns servantListResponse
+        every { mapper.transform(servantListResponse) } returns servantModelList
+
+        // Act
+        val result = repository.getServantsByName("mock")
+
+        // Assert
+        Assert.assertEquals(result, servantModelList.right())
+        coVerify { dataSource.getServantsByName("mock") }
+
+    }
+
+    @Test
+    fun should_return_left_exception_when_get_servants_by_name_is_called_with_success_null_body() =
+        runTest {
+            // Arrange
+            coEvery { dataSource.getServantsByName("mock") } returns servantResponse
+            every { servantResponse.code() } returns 200
+            every { servantResponse.body() } returns null
+
+            // Act
+            val result = repository.getServantsByName("mock")
+            val error = result.leftOrNull()
+            val exception = Exception(FunctionsUtil.getGenericErrorMessage(servantResponse))
+
+            // Assert
+            Assert.assertTrue(
+                result.isLeft()
+            )
+            Assert.assertEquals(error?.message, exception.message)
+            coVerify { dataSource.getServantsByName("mock") }
+
+        }
+
+    @Test
+    fun should_return_left_exception_when_get_servants_by_name_is_called_with_errors() =
+        runTest {
+            // Arrange
+            coEvery { dataSource.getServantsByName("mock") } throws httpException
+
+            // Act
+            val result = repository.getServantsByName("mock")
+            val error = result.leftOrNull()
+
+            // Assert
+            Assert.assertTrue(
+                result.isLeft()
+            )
+            Assert.assertEquals(error, httpException)
+            coVerify { dataSource.getServantsByName("mock") }
+
+        }
 }
