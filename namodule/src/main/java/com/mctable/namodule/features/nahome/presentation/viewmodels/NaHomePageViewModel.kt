@@ -7,6 +7,7 @@ import com.mctable.namodule.features.nahome.domain.model.ServantModel
 import com.mctable.namodule.features.nahome.domain.usecase.GetServantsByNameUseCase
 import com.mctable.namodule.features.nahome.domain.usecase.GetServantsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -49,10 +50,12 @@ class NaHomePageViewModel @Inject constructor(
         viewModelScope.launch {
             _showLoadingDialogState.emit(true)
             getServantsUseCase.execute(index + 1, pageSize, classFilter).collect {
+                if(it !is UIState.Loading){
+                    _showLoadingDialogState.emit(false)
+                }
                 if (it is UIState.Success) {
                     _enableLoadMore.emit(it.data.isNotEmpty())
                     servantList.addAll(it.data)
-                    _showLoadingDialogState.emit(false)
                     _servantsState.emit(UIState.Success(servantList))
                 }
             }
