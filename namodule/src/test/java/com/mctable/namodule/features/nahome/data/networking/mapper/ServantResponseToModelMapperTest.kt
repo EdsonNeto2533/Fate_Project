@@ -1,9 +1,12 @@
 package com.mctable.namodule.features.nahome.data.networking.mapper
 
+import com.mctable.commons.ds.utils.ServantCard
 import com.mctable.core.utils.interfaces.Mapper
 import com.mctable.namodule.features.nahome.data.response.ServantResponse
 import com.mctable.namodule.features.nahome.domain.model.ServantModel
 import com.mctable.namodule.features.nahome.mockers.servantListResponse
+import io.mockk.every
+import io.mockk.mockk
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
@@ -38,6 +41,23 @@ class ServantResponseToModelMapperTest {
         Assert.assertEquals(response[0].className, servantListResponse[0].className)
         Assert.assertEquals(response[0].rarity, servantListResponse[0].rarity)
         Assert.assertEquals(response[0].hpMax, servantListResponse[0].hpMax)
+
+    }
+
+    @Test
+    fun should_return_arts_when_the_card_is_unknown() {
+        // Arrange
+        val servantMock: ServantResponse = mockk(relaxed = true)
+        val servantListMock: List<ServantResponse> = listOf(
+            servantMock
+        )
+        every { servantMock.cards } returns listOf("mock")
+
+        // Act
+        val response = mapper.transform(servantListMock)
+
+        // Assert
+        Assert.assertEquals(ServantCard.ARTS.key, response.first().cards.first().key)
 
     }
 }
