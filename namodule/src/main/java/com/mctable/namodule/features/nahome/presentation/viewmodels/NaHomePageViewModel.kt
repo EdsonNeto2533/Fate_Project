@@ -62,6 +62,7 @@ class NaHomePageViewModel @Inject constructor(
     fun loadServantsByName(name: String) {
         viewModelScope.launch {
             getServantsByNameUseCase.execute(name).collect {
+                classFilter = null
                 _enableLoadMore.emit(false)
                 _servantsState.emit(it)
             }
@@ -73,7 +74,7 @@ class NaHomePageViewModel @Inject constructor(
         getServants()
     }
 
-    fun filterServantsByClass(servantClass: String) {
+    fun filterServantsByClass(servantClass: String?) {
         classFilter = servantClass
         resetList()
     }

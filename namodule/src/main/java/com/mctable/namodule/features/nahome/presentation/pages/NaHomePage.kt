@@ -3,6 +3,7 @@ package com.mctable.namodule.features.nahome.presentation.pages
 
 import androidx.activity.ComponentActivity
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -41,6 +42,10 @@ fun NaHomePage() {
         mutableStateOf("")
     }
 
+    var classFilter: String? by remember {
+        mutableStateOf(null)
+    }
+
     LaunchedEffect(key1 = true) {
         viewModel.getServants()
     }
@@ -67,10 +72,12 @@ fun NaHomePage() {
                     placeholderText = "Search servant",
                     initialText = searchText,
                     searchClicked = {
+                        classFilter = null
                         searchText = it
                         viewModel.loadServantsByName(it)
                     },
                     textCleared = {
+                        classFilter = null
                         searchText = ""
                         viewModel.resetList()
                     }
@@ -82,8 +89,10 @@ fun NaHomePage() {
                         start = 20.dp,
                         end = 20.dp,
                         bottom = 8.dp
-                    )
+                    ),
+                    selectedFilter = classFilter
                 ) {
+                    classFilter = it.key
                     viewModel.filterServantsByClass(it.key)
                 }
                 when (state) {

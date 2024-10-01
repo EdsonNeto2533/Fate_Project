@@ -3,7 +3,8 @@ package com.mctable.commons.ds.utils.enums
 import androidx.annotation.DrawableRes
 import com.mctable.commons.R
 
-enum class ServantClasses(val key: String, @DrawableRes val icon: Int) {
+enum class ServantClasses(val key: String?, @DrawableRes val icon: Int) {
+    ALL(null, R.drawable.class_all_png),
     SABER("saber", R.drawable.class_saber_vect),
     ARCHER("archer", R.drawable.class_archer_vect),
     LANCER("lancer", R.drawable.class_lancer_vect),

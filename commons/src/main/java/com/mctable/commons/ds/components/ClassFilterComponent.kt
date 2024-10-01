@@ -17,11 +17,16 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.mctable.commons.ds.theme.md_theme_light_surfaceTint
 import com.mctable.commons.ds.utils.enums.ServantClasses
 
 
 @Composable
-fun ClassFilterComponent(modifier: Modifier = Modifier, onClick: (ServantClasses) -> Unit) {
+fun ClassFilterComponent(
+    modifier: Modifier = Modifier,
+    selectedFilter: String? = null,
+    onClick: (ServantClasses) -> Unit
+) {
     LazyRow(
         modifier = Modifier
             .fillMaxWidth()
@@ -40,7 +45,12 @@ fun ClassFilterComponent(modifier: Modifier = Modifier, onClick: (ServantClasses
                     ),
                 shape = RoundedCornerShape(16.dp),
                 border = BorderStroke(2.dp, Color.LightGray),
-                colors = CardDefaults.cardColors(containerColor = Color.Transparent),
+                colors = CardDefaults.cardColors(
+                    containerColor = getContainerColor(
+                        selectedFilter,
+                        servantClass
+                    )
+                ),
                 onClick = { onClick.invoke(servantClass) }
             ) {
                 Image(
@@ -54,6 +64,13 @@ fun ClassFilterComponent(modifier: Modifier = Modifier, onClick: (ServantClasses
             }
         }
     }
+}
+
+private fun getContainerColor(selectedFilter: String?, servantClasses: ServantClasses): Color {
+    if (selectedFilter == servantClasses.key) {
+        return md_theme_light_surfaceTint
+    }
+    return Color.Transparent
 }
 
 
