@@ -12,9 +12,10 @@ class ServantsDataSourceImpl @Inject constructor(
 ) : ServantsDataSource {
     override suspend fun getServants(
         offset: Int,
-        pageSize: Int
+        pageSize: Int,
+        servantClass: String?
     ): Response<BaseResponse<List<ServantResponse>, Any>> =
-        webService.getServants(offset, pageSize)
+        webService.getServants(offset, pageSize, servantClass)
 
     override suspend fun getServantsByName(name: String): Response<BaseResponse<List<ServantResponse>, Any>> =
         webService.getServantsByName(name)

@@ -36,6 +36,7 @@ fun NaHomePage() {
     val viewModel: NaHomePageViewModel = context.getViewModel()
     val state = viewModel.servantState.collectAsState().value
     val showLoadingDialogState = viewModel.showLoadingDialogState.collectAsState().value
+    val enableLoadMore = viewModel.enableLoadMore.collectAsState().value
     var searchText by remember {
         mutableStateOf("")
     }
@@ -83,7 +84,7 @@ fun NaHomePage() {
                         bottom = 8.dp
                     )
                 ) {
-
+                    viewModel.filterServantsByClass(it.key)
                 }
                 when (state) {
                     is UIState.Loading -> {
@@ -100,7 +101,7 @@ fun NaHomePage() {
                             loadMore = {
                                 viewModel.loadMoreServants(it)
                             },
-                            loadMoreEnabled = searchText.isBlank()
+                            loadMoreEnabled = enableLoadMore
                         )
                     }
 

@@ -21,9 +21,13 @@ class NaHomePageViewModel @Inject constructor(
     private val initialOffset = 0
     private val pageSize = 20
     private val servantList: MutableList<ServantModel> = mutableListOf()
+    private var classFilter: String? = null
 
     private val _showLoadingDialogState: MutableStateFlow<Boolean> = MutableStateFlow(false)
     val showLoadingDialogState = _showLoadingDialogState.asStateFlow()
+
+    private val _enableLoadMore: MutableStateFlow<Boolean> = MutableStateFlow(true)
+    val enableLoadMore = _enableLoadMore.asStateFlow()
 
     private val _servantsState: MutableStateFlow<UIState<List<ServantModel>>> =
         MutableStateFlow(UIState.Idle)
@@ -31,8 +35,9 @@ class NaHomePageViewModel @Inject constructor(
 
     fun getServants() {
         viewModelScope.launch {
-            getServantsUseCase.execute(initialOffset, pageSize).collect {
+            getServantsUseCase.execute(initialOffset, pageSize, classFilter).collect {
                 if (it is UIState.Success) {
+                    _enableLoadMore.emit(it.data.isNotEmpty())
                     servantList.addAll(it.data)
                 }
                 _servantsState.emit(it)
@@ -43,8 +48,9 @@ class NaHomePageViewModel @Inject constructor(
     fun loadMoreServants(index: Int) {
         viewModelScope.launch {
             _showLoadingDialogState.emit(true)
-            getServantsUseCase.execute(index + 1, pageSize).collect {
+            getServantsUseCase.execute(index + 1, pageSize, classFilter).collect {
                 if (it is UIState.Success) {
+                    _enableLoadMore.emit(it.data.isNotEmpty())
                     servantList.addAll(it.data)
                     _showLoadingDialogState.emit(false)
                     _servantsState.emit(UIState.Success(servantList))
@@ -56,6 +62,7 @@ class NaHomePageViewModel @Inject constructor(
     fun loadServantsByName(name: String) {
         viewModelScope.launch {
             getServantsByNameUseCase.execute(name).collect {
+                _enableLoadMore.emit(false)
                 _servantsState.emit(it)
             }
         }
@@ -64,6 +71,11 @@ class NaHomePageViewModel @Inject constructor(
     fun resetList() {
         resetValues()
         getServants()
+    }
+
+    fun filterServantsByClass(servantClass: String) {
+        classFilter = servantClass
+        resetList()
     }
 
     private fun resetValues() {

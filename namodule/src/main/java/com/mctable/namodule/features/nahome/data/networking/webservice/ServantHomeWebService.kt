@@ -13,6 +13,7 @@ interface ServantHomeWebService {
     suspend fun getServants(
         @Query("offset") offset: Int,
         @Query("pageSize") pageSize: Int,
+        @Query("className") servantClass: String?
     ): Response<BaseResponse<List<ServantResponse>, Any>>
 
     @GET("/servants/{name}")

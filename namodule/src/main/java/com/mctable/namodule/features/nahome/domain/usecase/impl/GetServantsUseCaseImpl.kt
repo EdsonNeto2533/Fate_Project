@@ -12,7 +12,7 @@ import javax.inject.Inject
 class GetServantsUseCaseImpl @Inject constructor(
     private val repository: ServantsRepository
 ) : GetServantsUseCase {
-    override fun execute(offset: Int, pageSize: Int): Flow<UIState<List<ServantModel>>> = flow {
+    override fun execute(offset: Int, pageSize: Int, servantClass: String?): Flow<UIState<List<ServantModel>>> = flow {
         emit(UIState.Loading)
         repository.getServants(offset, pageSize).fold(
             ifLeft = {

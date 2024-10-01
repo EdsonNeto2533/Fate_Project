@@ -17,10 +17,11 @@ class ServantsRepositoryImpl @Inject constructor(
 ) : ServantsRepository {
     override suspend fun getServants(
         offset: Int,
-        pageSize: Int
+        pageSize: Int,
+        servantClass: String?
     ): Either<Throwable, List<ServantModel>> {
         return try {
-            val response = servantsDataSource.getServants(offset, pageSize)
+            val response = servantsDataSource.getServants(offset, pageSize, servantClass)
 
             if (response.code() == 200) {
                 response.body()?.data?.let {

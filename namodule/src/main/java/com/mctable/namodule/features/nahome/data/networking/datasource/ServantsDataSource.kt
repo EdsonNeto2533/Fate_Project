@@ -7,7 +7,8 @@ import retrofit2.Response
 interface ServantsDataSource {
     suspend fun getServants(
         offset: Int,
-        pageSize: Int
+        pageSize: Int,
+        servantClass: String?
     ): Response<BaseResponse<List<ServantResponse>, Any>>
 
     suspend fun getServantsByName(name: String): Response<BaseResponse<List<ServantResponse>, Any>>
