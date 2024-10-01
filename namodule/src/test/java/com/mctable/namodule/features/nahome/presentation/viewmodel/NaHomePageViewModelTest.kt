@@ -36,21 +36,25 @@ class NaHomePageViewModelTest {
 
 
     @Before
-    fun setup(){
+    fun setup() {
         Dispatchers.setMain(coroutineRule)
-        viewModel = NaHomePageViewModel(getServantsUseCase)
+        viewModel = NaHomePageViewModel(getServantsUseCase, mockk())
     }
 
     @After
-    fun tearDown(){
+    fun tearDown() {
         Dispatchers.resetMain()
     }
 
 
     @Test
-    fun should_emit_loading_state_when_get_servants_is_called(){
+    fun should_emit_loading_state_when_get_servants_is_called() {
         // Arrange
-        coEvery { getServantsUseCase.execute(any(),any()) } returns flow { emit(genericLoadingState) }
+        coEvery { getServantsUseCase.execute(any(), any(), null) } returns flow {
+            emit(
+                genericLoadingState
+            )
+        }
 
         // Act
         viewModel.getServants()
@@ -60,9 +64,13 @@ class NaHomePageViewModelTest {
     }
 
     @Test
-    fun should_emit_success_state_when_get_servants_is_called(){
+    fun should_emit_success_state_when_get_servants_is_called() {
         // Arrange
-        coEvery { getServantsUseCase.execute(any(),any()) } returns flow { emit(servantsSuccessState) }
+        coEvery { getServantsUseCase.execute(any(), any(), null) } returns flow {
+            emit(
+                servantsSuccessState
+            )
+        }
 
         // Act
         viewModel.getServants()
@@ -72,10 +80,14 @@ class NaHomePageViewModelTest {
     }
 
     @Test
-    fun should_emit_error_state_when_get_servants_is_called(){
+    fun should_emit_error_state_when_get_servants_is_called() {
         // Arrange
         genericErrorState = UIState.Failure(GenericError("error"))
-        coEvery { getServantsUseCase.execute(any(),any()) } returns flow { emit(genericErrorState) }
+        coEvery { getServantsUseCase.execute(any(), any(), null) } returns flow {
+            emit(
+                genericErrorState
+            )
+        }
 
         // Act
         viewModel.getServants()

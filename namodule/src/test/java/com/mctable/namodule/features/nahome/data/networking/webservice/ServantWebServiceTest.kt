@@ -38,7 +38,7 @@ class ServantWebServiceTest {
     fun should_return_a_servant_list_response_when_get_servants_is_successful() = runTest {
         server.enqueueRequest("responses/servants_list_200_response.json", 200)
 
-        val result = webService.getServants(0, 1)
+        val result = webService.getServants(0, 1, null)
 
         Assert.assertEquals(servantListResponse, result.body()?.data)
         Assert.assertEquals(200, result.code())

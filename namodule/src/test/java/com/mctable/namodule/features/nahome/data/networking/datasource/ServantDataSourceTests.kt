@@ -33,28 +33,28 @@ class ServantDataSourceTests {
     @Test
     fun should_return_a_servant_list_when_getServants_is_called_with_success() = runTest {
         // Arrange
-        coEvery { webService.getServants(any(), any()) } returns servantListMock
+        coEvery { webService.getServants(any(), any(), any()) } returns servantListMock
 
         // Act
-        val response = dataSource.getServants(0, 20)
+        val response = dataSource.getServants(0, 20, null)
 
         // Assert
         Assert.assertEquals(servantListMock, response)
-        coVerify { webService.getServants(any(), any()) }
+        coVerify { webService.getServants(any(), any(), any()) }
     }
 
     @Test
     fun should_throw_an_httpException_when_the_is_a_network_error() {
         // Arrange
-        coEvery { webService.getServants(any(), any()) } throws httpException
+        coEvery { webService.getServants(any(), any(), any()) } throws httpException
 
         // Assert
         Assert.assertThrows(HttpException::class.java) {
             runTest {
-                dataSource.getServants(0, 20)
+                dataSource.getServants(0, 20, null)
             }
         }
-        coVerify { webService.getServants(any(), any()) }
+        coVerify { webService.getServants(any(), any(), any()) }
 
     }
 }

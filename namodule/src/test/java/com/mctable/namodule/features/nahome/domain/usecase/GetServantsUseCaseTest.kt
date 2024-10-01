@@ -34,10 +34,10 @@ class GetServantsUseCaseTest {
     @Test
     fun should_emit_loading_and_success_when_get_servants_use_case_is_called() = runTest {
         // Arrange
-        coEvery { repository.getServants(any(), any()) } returns servantListMock.right()
+        coEvery { repository.getServants(any(), any(), null) } returns servantListMock.right()
 
         // Act
-        val result = useCase.execute(0, 20).toList()
+        val result = useCase.execute(0, 20, null).toList()
 
         // Assert
         Assert.assertEquals(
@@ -46,16 +46,16 @@ class GetServantsUseCaseTest {
                 UIState.Success(servantListMock)
             )
         )
-        coVerify { repository.getServants(any(), any()) }
+        coVerify { repository.getServants(any(), any(), null) }
     }
 
     @Test
     fun should_emit_loading_and_error_when_get_servants_use_case_is_called_with_errors() = runTest {
         // Arrange
-        coEvery { repository.getServants(any(), any()) } returns genericException.left()
+        coEvery { repository.getServants(any(), any(), null) } returns genericException.left()
 
         // Act
-        val result = useCase.execute(0, 20).toList()
+        val result = useCase.execute(0, 20, null).toList()
 
         // Assert
         Assert.assertEquals(
@@ -64,6 +64,6 @@ class GetServantsUseCaseTest {
                 UIState.Failure(GenericError(genericException.message))
             )
         )
-        coVerify { repository.getServants(any(), any()) }
+        coVerify { repository.getServants(any(), any(), null) }
     }
 }

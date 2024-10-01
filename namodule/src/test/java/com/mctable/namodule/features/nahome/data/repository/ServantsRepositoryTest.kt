@@ -40,17 +40,17 @@ class ServantsRepositoryTest {
     @Test
     fun should_return_right_servant_list_when_get_servants_is_called_with_success() = runTest {
         // Arrange
-        coEvery { dataSource.getServants(any(), any()) } returns servantResponse
+        coEvery { dataSource.getServants(any(), any(), null) } returns servantResponse
         every { servantResponse.code() } returns 200
         every { servantResponse.body()?.data } returns servantListResponse
         every { mapper.transform(servantListResponse) } returns servantModelList
 
         // Act
-        val result = repository.getServants(0, 20)
+        val result = repository.getServants(0, 20, null)
 
         // Assert
         Assert.assertEquals(result, servantModelList.right())
-        coVerify { dataSource.getServants(any(), any()) }
+        coVerify { dataSource.getServants(any(), any(), null) }
 
     }
 
@@ -58,12 +58,12 @@ class ServantsRepositoryTest {
     fun should_return_left_exception_when_get_servants_is_called_with_success_null_body() =
         runTest {
             // Arrange
-            coEvery { dataSource.getServants(any(), any()) } returns servantResponse
+            coEvery { dataSource.getServants(any(), any(), null) } returns servantResponse
             every { servantResponse.code() } returns 200
             every { servantResponse.body() } returns null
 
             // Act
-            val result = repository.getServants(0, 20)
+            val result = repository.getServants(0, 20, null)
             val error = result.leftOrNull()
             val exception = Exception(FunctionsUtil.getGenericErrorMessage(servantResponse))
 
@@ -72,7 +72,7 @@ class ServantsRepositoryTest {
                 result.isLeft()
             )
             Assert.assertEquals(error?.message, exception.message)
-            coVerify { dataSource.getServants(any(), any()) }
+            coVerify { dataSource.getServants(any(), any(), null) }
 
         }
 
@@ -80,10 +80,10 @@ class ServantsRepositoryTest {
     fun should_return_left_exception_when_get_servants_is_called_with_errors() =
         runTest {
             // Arrange
-            coEvery { dataSource.getServants(any(), any()) } throws httpException
+            coEvery { dataSource.getServants(any(), any(), null) } throws httpException
 
             // Act
-            val result = repository.getServants(0, 20)
+            val result = repository.getServants(0, 20, null)
             val error = result.leftOrNull()
 
             // Assert
@@ -91,7 +91,7 @@ class ServantsRepositoryTest {
                 result.isLeft()
             )
             Assert.assertEquals(error, httpException)
-            coVerify { dataSource.getServants(any(), any()) }
+            coVerify { dataSource.getServants(any(), any(), null) }
 
         }
 }
