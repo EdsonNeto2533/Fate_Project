@@ -45,4 +45,15 @@ class ServantWebServiceTest {
 
     }
 
+    @Test
+    fun should_return_a_servant_list_response_when_get_servants_by_name_is_successful() = runTest {
+        server.enqueueRequest("responses/servants_list_200_response.json", 200)
+
+        val result = webService.getServantsByName("mock")
+
+        Assert.assertEquals(servantListResponse, result.body()?.data)
+        Assert.assertEquals(200, result.code())
+
+    }
+
 }

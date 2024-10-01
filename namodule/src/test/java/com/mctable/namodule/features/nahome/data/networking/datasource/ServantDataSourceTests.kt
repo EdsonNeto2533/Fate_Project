@@ -57,4 +57,17 @@ class ServantDataSourceTests {
         coVerify { webService.getServants(any(), any(), any()) }
 
     }
+
+    @Test
+    fun should_return_a_servant_list_when_getServantsByName_is_called_with_success() = runTest {
+        // Arrange
+        coEvery { webService.getServantsByName("mock") } returns servantListMock
+
+        // Act
+        val response = dataSource.getServantsByName("mock")
+
+        // Assert
+        Assert.assertEquals(servantListMock, response)
+        coVerify { webService.getServantsByName("mock") }
+    }
 }
