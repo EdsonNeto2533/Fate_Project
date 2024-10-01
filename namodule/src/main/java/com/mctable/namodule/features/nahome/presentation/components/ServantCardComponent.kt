@@ -21,6 +21,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.mctable.commons.ds.utils.emptyString
+import com.mctable.commons.ds.utils.enums.ServantClasses
 import com.mctable.namodule.features.nahome.domain.model.ServantModel
 
 
@@ -30,7 +31,8 @@ fun ServantCardComponent(
     servantModel: ServantModel
 ) {
     Card(
-        modifier = Modifier.then(modifier)
+        modifier = Modifier
+            .then(modifier)
             .shadow(
                 elevation = 10.dp,
                 ambientColor = DefaultShadowColor,
@@ -52,6 +54,16 @@ fun ServantCardComponent(
                         .width(56.dp),
                     model = servantModel.characterAssetsModel.characterFaces.first,
                     contentDescription = emptyString,
+                )
+            },
+            trailingContent = {
+                Image(
+                    modifier = Modifier.size(40.dp),
+                    painter = painterResource(
+                        id = ServantClasses.values().find { it.key == servantModel.className }?.icon
+                            ?: ServantClasses.ALL.icon
+                    ),
+                    contentDescription = servantModel.name,
                 )
             },
             supportingContent = {
