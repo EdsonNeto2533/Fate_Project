@@ -44,6 +44,6 @@ dependencies {
     implementation(libs.bundles.core.bundle)
     implementation(libs.mock.web.server)
     testImplementation(libs.bundles.unit.test.bundle)
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    androidTestImplementation(libs.bundles.compose.ui.test.bundle)
+    androidTestImplementation(platform(libs.compose.bom))
 }

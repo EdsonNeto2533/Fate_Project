@@ -28,6 +28,8 @@ jetbrains-kotlin-android = "1.8.10"
 dagger-hilt = "2.44"
 android-library = "8.1.4"
 dynamic-feature = "8.1.4"
+junit-ui-test = "1.2.1"
+expresso = "3.5.1"
 
 [libraries]
 android-gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
@@ -46,6 +48,7 @@ compose-activity = { module = "androidx.activity:activity-compose", version.ref 
 compose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "compose-navigation" }
 compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
 compose-preview-debug = { module = "androidx.compose.ui:ui-tooling" }
+compose-ui-test = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose" }
 
 hilt = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt-navigation = { module = "androidx.hilt:hilt-navigation-fragment", version.ref = "hilt-navigation" }
@@ -66,7 +69,9 @@ junit = { module = "junit:junit", version.ref = "junit" }
 coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines-test" }
 coroutines-test-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines-test" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
-compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
+compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
+android-test = { module = "androidx.test.ext:junit", version.ref = "junit-ui-test" }
+expresso = { module = "androidx.test.espresso:espresso-core", version.ref = "expresso" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "android-application" }
@@ -81,5 +86,6 @@ hilt-bundle = ["hilt", "hilt-navigation"]
 debug-implementation-bundle = ["compose-preview-debug", "compose-ui-tooling", "compose-ui-test-manifest"]
 core-bundle = ["coroutines", "coil", "arrow"]
 unit-test-bundle = ["mockk", "mock-web-server", "junit", "coroutines-test", "coroutines-test-core"]
+compose-ui-test-bundle = ["compose-ui-test", "compose-ui-test-manifest", "android-test", "expresso"]
 material-bundle = ["material"]
-androidx-bundle = ["compose-ui", "compose-graphics", "app-compat", "compose-preview","compose-ui-tooling", "material-3", "android-core", "android-lifecycle", "compose-activity", "compose-navigation", "compose-bom"]
+androidx-bundle = ["compose-ui", "compose-graphics", "app-compat", "compose-preview", "compose-ui-tooling", "material-3", "android-core", "android-lifecycle", "compose-activity", "compose-navigation", "compose-bom"]
