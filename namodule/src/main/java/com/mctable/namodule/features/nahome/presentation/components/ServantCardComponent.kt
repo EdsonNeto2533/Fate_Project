@@ -17,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.DefaultShadowColor
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
@@ -32,6 +33,7 @@ fun ServantCardComponent(
 ) {
     Card(
         modifier = Modifier
+            .testTag("servant-card-tag")
             .then(modifier)
             .shadow(
                 elevation = 10.dp,
@@ -41,8 +43,10 @@ fun ServantCardComponent(
             ),
     ) {
         ListItem(
+            modifier = Modifier.testTag("servant-list-item-tag"),
             headlineContent = {
                 Text(
+                    modifier = Modifier.testTag("servant-name-tag"),
                     text = servantModel.name,
                     style = MaterialTheme.typography.labelLarge
                 )
@@ -50,6 +54,7 @@ fun ServantCardComponent(
             leadingContent = {
                 AsyncImage(
                     modifier = Modifier
+                        .testTag("servant-image-tag")
                         .height(56.dp)
                         .width(56.dp),
                     model = servantModel.characterAssetsModel.characterFaces.first,
@@ -58,7 +63,9 @@ fun ServantCardComponent(
             },
             trailingContent = {
                 Image(
-                    modifier = Modifier.size(40.dp),
+                    modifier = Modifier
+                        .testTag("servant-class-image-tag")
+                        .size(40.dp),
                     painter = painterResource(
                         id = ServantClasses.values().find { it.key == servantModel.className }?.icon
                             ?: ServantClasses.ALL.icon
@@ -69,13 +76,16 @@ fun ServantCardComponent(
             supportingContent = {
                 Column {
                     Text(
+                        modifier = Modifier.testTag("servant-class-name-tag"),
                         text = servantModel.className,
                         style = MaterialTheme.typography.labelMedium
                     )
                     Row(horizontalArrangement = Arrangement.SpaceEvenly) {
                         servantModel.cards.forEach {
                             Image(
-                                modifier = Modifier.size(40.dp),
+                                modifier = Modifier
+                                    .testTag("servant-card-image-tag-${it.key}")
+                                    .size(40.dp),
                                 painter = painterResource(id = it.drawable),
                                 contentDescription = it.key,
                             )
