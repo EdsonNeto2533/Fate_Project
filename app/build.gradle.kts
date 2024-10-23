@@ -66,6 +66,7 @@ dependencies {
     androidTestImplementation(libs.bundles.compose.ui.test.bundle)
     androidTestImplementation(platform(libs.compose.bom))
     debugImplementation(libs.bundles.debug.implementation.bundle)
+    debugImplementation(libs.compose.ui.test.manifest)
 }
 
 kapt {

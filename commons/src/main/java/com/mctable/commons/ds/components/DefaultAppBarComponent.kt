@@ -14,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -31,11 +32,13 @@ fun DefaultAppBarComponent(
     backButtonClick: (() -> Unit)? = null
 ) {
     CenterAlignedTopAppBar(
-        modifier = modifier.then(modifier),
+        modifier = modifier
+            .then(modifier)
+            .testTag("default-app-bar-tag"),
         colors = TopAppBarDefaults.centerAlignedTopAppBarColors(containerColor = md_theme_light_surfaceTint),
         navigationIcon = {
             backButtonClick?.let {
-                IconButton(onClick = {
+                IconButton(modifier = Modifier.testTag("back-button-tag"), onClick = {
                     it.invoke()
                 }) {
                     Icon(
@@ -50,13 +53,14 @@ fun DefaultAppBarComponent(
         title = {
             title?.let {
                 Text(
+                    modifier = Modifier.testTag("title-tag"),
                     text = title,
                     style = MaterialTheme.typography.headlineSmall,
                     color = md_theme_light_onPrimary
                 )
             } ?: run {
                 Icon(
-                    modifier = Modifier.height(28.dp),
+                    modifier = Modifier.height(28.dp).testTag("logo-tag"),
                     painter = painterResource(id = R.drawable.fgo_logo),
                     contentDescription = emptyString,
                     tint = md_theme_light_onPrimary
