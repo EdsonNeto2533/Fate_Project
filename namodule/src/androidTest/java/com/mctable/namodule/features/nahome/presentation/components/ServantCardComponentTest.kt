@@ -4,7 +4,6 @@ import androidx.compose.ui.test.assertCountEquals
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
-import com.mctable.commons.ds.components.DefaultAppBarComponent
 import com.mctable.commons.ds.theme.FateProjectTheme
 import com.mctable.commons.ds.utils.ServantCard
 import com.mctable.namodule.features.nahome.domain.model.AscensionContentsModel
