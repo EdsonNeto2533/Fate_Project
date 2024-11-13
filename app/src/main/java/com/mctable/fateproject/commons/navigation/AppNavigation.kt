@@ -12,7 +12,7 @@ import com.mctable.fateproject.splash.presentation.views.SplashPage
 import com.mctable.namodule.features.nahome.presentation.pages.NaHomePage
 
 @Composable
-fun AppNavigation(
+fun  AppNavigation(
     fateNavigation: FateNavigation
 ) {
 

@@ -12,6 +12,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.mctable.namodule.features.nahome.domain.model.ServantModel
 
@@ -28,7 +29,7 @@ fun ServantListSuccessState(
 
     LazyColumn(modifier = Modifier
         .padding(bottom = 16.dp)
-        .wrapContentHeight(),
+        .wrapContentHeight().testTag("servant-list-lazy-column-tag"),
         state = listState,
         verticalArrangement = Arrangement.spacedBy(8.dp),
         content = {
