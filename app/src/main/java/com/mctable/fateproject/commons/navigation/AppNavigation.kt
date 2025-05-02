@@ -10,9 +10,10 @@ import com.mctable.commons.ds.navigation.Routes
 import com.mctable.commons.ds.utils.ObserveAsEvents
 import com.mctable.fateproject.splash.presentation.views.SplashPage
 import com.mctable.namodule.features.nahome.presentation.pages.NaHomePage
+import com.mctable.namodule.navigation.naModuleNavigation
 
 @Composable
-fun  AppNavigation(
+fun AppNavigation(
     fateNavigation: FateNavigation
 ) {
 
@@ -36,13 +37,8 @@ fun  AppNavigation(
         navController = navController,
         startDestination = Routes.SPLASH
     ) {
-        composable(Routes.SPLASH) {
-            SplashPage()
-        }
-
-        composable(Routes.NA_HOME_PAGE) {
-            NaHomePage()
-        }
+        mainModuleNavigation()
+        naModuleNavigation()
     }
 
 }
